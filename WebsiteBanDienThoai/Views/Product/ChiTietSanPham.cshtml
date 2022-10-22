@@ -1,0 +1,498 @@
+﻿@model WebsiteBanDienThoai.Models.SanPham
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <section class="container">
+
+        <ul class="b-crumbs">
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="catalog-list.html">
+                    Catalog
+                </a>
+            </li>
+            <li>
+                <a href="catalog-list.html">
+                    Women
+                </a>
+            </li>
+            <li>
+                <span>Aperiam nihil veniam</span>
+            </li>
+        </ul>
+        <h1 class="main-ttl"><span>@Model.ten</span></h1>
+        <!-- Single Product - start -->
+        <div class="prod-wrap">
+
+            <!-- Product Images -->
+            <div class="prod-slider-wrap">
+                <div class="prod-slider">
+                    <ul class="prod-slider-car">
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x642">
+                                <img src="~/Assets/img/@Model.hinh_anh" alt="">
+                            </a>
+                        </li>
+                        @*<li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>*@
+                    </ul>
+                </div>
+                <div class="prod-thumbs">
+                    <ul class="prod-thumbs-car">
+                        <li>
+                            <a data-slide-index="0" href="#">
+                                <img src="http://placehold.it/500x642" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-slide-index="1" href="#">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-slide-index="2" href="#">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-slide-index="3" href="#">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-slide-index="4" href="#">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-slide-index="5" href="#">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-slide-index="6" href="#">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a data-slide-index="7" href="#">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Product Description/Info -->
+            <div class="prod-cont">
+                <div class="prod-cont-txt">
+                    Quis temporibus hic reprehenderit explicabo odio earum maxime cupiditate mollitia magni laboriosam illum adipisci, ipsam, repellendus optio esse dolorem incidunt debitis eius voluptate expedita assumenda
+                </div>
+                <p class="prod-actions">
+                    <a href="#" class="prod-favorites"><i class="fa fa-heart"></i> Wishlist</a>
+                    <a href="#" class="prod-compare"><i class="fa fa-bar-chart"></i> Compare</a>
+                </p>
+                <div class="prod-skuwrap">
+                    <p class="prod-skuttl">Color</p>
+                    <ul class="prod-skucolor">
+                        <li class="active">
+                            <img src="img/color/blue.jpg" alt="">
+                        </li>
+                        <li>
+                            <img src="img/color/red.jpg" alt="">
+                        </li>
+                        <li>
+                            <img src="img/color/green.jpg" alt="">
+                        </li>
+                        <li>
+                            <img src="img/color/yellow.jpg" alt="">
+                        </li>
+                        <li>
+                            <img src="img/color/purple.jpg" alt="">
+                        </li>
+                    </ul>
+                    <p class="prod-skuttl">CLOTHING SIZES</p>
+                    <div class="offer-props-select">
+                        <p>XL</p>
+                        <ul>
+                            <li><a href="#">XS</a></li>
+                            <li><a href="#">S</a></li>
+                            <li><a href="#">M</a></li>
+                            <li class="active"><a href="#">XL</a></li>
+                            <li><a href="#">L</a></li>
+                            <li><a href="#">4XL</a></li>
+                            <li><a href="#">XXL</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="prod-info">
+                    <p class="prod-price">
+                        <b class="item_current_price">@Model.gia_moi</b>
+                    </p>
+                    <p class="prod-qnt">
+                        <input value="1" type="text">
+                        <a href="#" class="prod-plus"><i class="fa fa-angle-up"></i></a>
+                        <a href="#" class="prod-minus"><i class="fa fa-angle-down"></i></a>
+                    </p>
+                    <p class="prod-addwrap">
+                        <a href="#" class="prod-add" rel="nofollow">Add to cart</a>
+                    </p>
+                </div>
+                <ul class="prod-i-props">
+                    <li>
+                        <b>Kích thước màn hình</b> @Model.kichThuocManHinh
+                    </li>
+                    <li>
+                        <b>Độ phân giải màn hinh</b> @Model.dophangiaiManHinh
+                    </li>
+                    <li>
+                        <b>CPU</b> @Model.CPU
+                    </li>
+                    <li>
+                        <b>Bộ nhớ trong</b> @Model.bonhotrong
+                    </li>
+                    <li>
+                        <b>Camera Trước</b> @Model.cameraTruoc
+                    </li>
+                    <li>
+                        <b>Camera Sau</b> @Model.cameraSau
+                    </li>
+                    <li>
+                        <b>Hệ điều hành</b> @Model.heDieuHanh
+                    </li>
+                    <li>
+                        <b>Pin</b> @Model.pin
+                    </li>
+                    <li>
+                        <b>Ram</b>@Model.ram
+                    </li>
+                    <li>
+                        <b>Sim</b>@Model.sim
+                    </li>
+                    <li><a href="#" class="prod-showprops">All Features</a></li>
+                </ul>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="prod-tabs-wrap">
+                <ul class="prod-tabs">
+                    <li><a data-prodtab-num="1" class="active" href="#" data-prodtab="#prod-tab-1">Description</a></li>
+                    <li><a data-prodtab-num="2" id="prod-props" href="#" data-prodtab="#prod-tab-2">Features</a></li>
+                </ul>
+                <div class="prod-tab-cont">
+
+                    <p data-prodtab-num="1" class="prod-tab-mob active" data-prodtab="#prod-tab-1">Description</p>
+                    <div class="prod-tab stylization" id="prod-tab-1">
+                        <p>@Model.mota</p>
+                        
+                    </div>
+                    <p data-prodtab-num="2" class="prod-tab-mob" data-prodtab="#prod-tab-2">Features</p>
+                    <div class="prod-tab prod-props" id="prod-tab-2">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Kích thước màn hình</td>
+                                    <td>@Model.kichThuocManHinh</td>
+                                </tr>
+                                <tr>
+                                    <td>Độ phân giải màn hình</td>
+                                    <td>@Model.dophangiaiManHinh</td>
+                                </tr>
+                                <tr>
+                                    <td>CPU</td>
+                                    <td>@Model.CPU</td>
+                                </tr>
+                                <tr>
+                                    <td>Camera trước</td>
+                                    <td>@Model.cameraTruoc</td>
+                                </tr>
+                                <tr>
+                                    <td>Camera sau</td>
+                                    <td>@Model.cameraSau</td>
+                                </tr>
+                                <tr>
+                                    <td>Hệ điều hành</td>
+                                    <td>@Model.heDieuHanh</td>
+                                </tr>
+                                <tr>
+                                    <td>Pin</td>
+                                    <td>@Model.pin</td>
+                                </tr>
+                                <tr>
+                                    <td>Ram</td>
+                                    <td>@Model.ram</td>
+                                </tr>
+                                <tr>
+                                    <td>Sim</td>
+                                    <td>@Model.sim</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Single Product - end -->
+        <!-- Related Products - start -->
+        <div class="prod-related">
+            <h2><span>Related products</span></h2>
+            <div class="prod-related-car" id="prod-related-car">
+                <ul class="slides">
+                    <li class="prod-rel-wrap">
+                        <div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="~/Assets/img/@Model.hinh_anh" alt="Adipisci aperiam commodi">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">@Model.ten</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>@Model.gia_moi</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        @*<div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="http://placehold.it/300x366" alt="Nulla numquam obcaecati">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">Nulla numquam obcaecati</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>$48</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="http://placehold.it/370x300" alt="Dignissimos eaque earum">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">Dignissimos eaque earum</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>$37</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="http://placehold.it/300x345" alt="Porro quae quasi">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">Porro quae quasi</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>$85</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>*@
+
+                    </li>
+                    <li class="prod-rel-wrap">
+                        <div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="http://placehold.it/378x300" alt="Sunt temporibus velit">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">Sunt temporibus velit</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>$115</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="http://placehold.it/300x394" alt="Harum illum incidunt">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">Harum illum incidunt</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>$130</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="http://placehold.it/300x303" alt="Reprehenderit rerum">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">Reprehenderit rerum</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>$210</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="http://placehold.it/300x588" alt="Quae quasi adipisci alias">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">Quae quasi adipisci alias</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>$85</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="prod-rel-wrap">
+                        <div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="http://placehold.it/300x416" alt="Maxime molestias necessitatibus nobis">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">Maxime molestias necessitatibus nobis</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>$95</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="prod-rel">
+                            <a href="product.html" class="prod-rel-img">
+                                <img src="http://placehold.it/300x480" alt="Facilis illum">
+                            </a>
+                            <div class="prod-rel-cont">
+                                <h3><a href="product.html">Facilis illum</a></h3>
+                                <p class="prod-rel-price">
+                                    <b>$150</b>
+                                </p>
+                                <div class="prod-rel-actions">
+                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
+                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
+                                    <p class="prod-i-addwrap">
+                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Related Products - end -->
+
+    </section>
+</main>

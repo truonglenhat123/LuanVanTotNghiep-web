@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="165fb8babf184303b86ab85941d1a728" Name="Diagram1">
+        <EntityTypeShape EntityType="dbKL4Model.ChiTietHoaDonBan" Width="1.5" PointX="6" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.ChiTietHoaDonMua" Width="1.5" PointX="6" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.DanhMuc" Width="1.5" PointX="1.5" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.GioHang" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.HoaDonBan" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.HoaDonMua" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.KhachHang" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.Kho" Width="1.5" PointX="1.5" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.NhaCungCap" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.NhanVien" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.SanPham" Width="1.5" PointX="3.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbKL4Model.TaiKhoan" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="dbKL4Model.FK_ChiTietHoaDonBan_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_ChiTietHoaDonMua_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_SanPham_DanhMuc" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_GioHang_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_GioHang_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_HoaDonBan_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_HoaDonMua_NhaCungCap" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_HoaDonMua_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_KhachHang_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_KhachHang_TaiKhoan1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_SanPham_Kho" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_SanPham_NhaCungCap" ManuallyRouted="false" />
+        <AssociationConnector Association="dbKL4Model.FK_NhanVien_TaiKhoan" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

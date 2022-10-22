@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebsiteBanDienThoai.Models.DanhMuc>
+@{
+    Layout = null;
+}
+
+
+@{
+    ViewBag.Title = "_Category";
+
+}
+
+<div class="topcatalog">
+    <a class="topcatalog-btn" href="#">Danh mục SP</a>
+    <ul class="topcatalog-list">
+        @foreach(var item in Model)
+            {
+                <li>
+                    <a href="LapTop.html">
+                       @item.ten
+                    </a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+            }
+        
+       
+    </ul>
+</div>
