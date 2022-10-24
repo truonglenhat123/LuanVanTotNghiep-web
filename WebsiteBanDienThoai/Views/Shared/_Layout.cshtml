@@ -78,120 +78,27 @@
                 <nav class="topmenu">
 
                     <!-- Catalog menu - start -->
-                    <div class="topcatalog">
-                        <a class="topcatalog-btn" href="#">Danh mục SP</a>
-                        <ul class="topcatalog-list">
-                            <li>
-                                <a href="LapTop.html">
-                                    Laptop
-                                </a>
-                                <i class="fa fa-angle-right"></i>
-                                <ul>
-                                    <li>
-                                        <a href="LapTopAcer.html">
-                                            Acer
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="LapTopasus.html">
-                                            Asus
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="LapTopMsi.html">
-                                            Msi
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="LapTopDell.html">
-                                            Dell
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="LapTopLenovo.html">
-                                            Lenovo
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="PCGaming.html">
-                                    PC-Gaming
-                                </a>
-                                <i class="fa fa-angle-right"></i>
-                                <ul>
-                                    <li>
-                                        <a href="PCGamingTamTrung.html">
-                                            PC Gaming Tầm Trung
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="PCGamingCaoCap.html">
-                                            PC Gaming Cao Cấp
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="PCGamingSieuCaoCap.html">
-                                            PC Gaming Siêu Cao Cấp
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="PCWorkStation.html">
-                                    PC-Workstation
-                                </a>
-                                <i class="fa fa-angle-right"></i>
-                                <ul>
-                                    <li>
-                                        <a href="PCWorkIntel.html">
-                                            PC Workstation Intel Xeon
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="PCworkrezy.html">
-                                            PC Workstation Ryzen
-                                        </a>
-                                    </li>
+                    @*<div class="topcatalog">
+            <a class="topcatalog-btn" href="#">Danh mục SP</a>
+            <ul class="topcatalog-list">
 
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="linhkien.html">
-                                    Linh Kiện
-                                </a>
-                                <i class="fa fa-angle-right"></i>
-                                <ul>
-                                    <li>
-                                        <a href="CPU.html">
-                                            CPU
-                                        </a>
 
-                                    </li>
-                                    <li>
-                                        <a href="RAM.html">
-                                            RAM
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+            </ul>
+        </div>*@
+                   
                     <!-- Catalog menu - end -->
                     <!-- Main menu - start -->
                     <button type="button" class="mainmenu-btn">Service</button>
 
                     <ul class="mainmenu">
                         <li>
-                            <a href="index.html" class="active">
+                            <a href="@Url.Action("Index","Home")" class="active">
                                 Trang Chủ
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                About Us
+                            <a href="@Url.Action("ProductList","Product")">
+                               Sản Phẩm
                             </a>
                         </li>
                         <li>

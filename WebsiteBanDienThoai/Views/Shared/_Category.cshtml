@@ -9,19 +9,15 @@
 
 }
 
-<div class="topcatalog">
-    <a class="topcatalog-btn" href="#">Danh mục SP</a>
-    <ul class="topcatalog-list">
-        @foreach(var item in Model)
-            {
-                <li>
-                    <a href="LapTop.html">
-                       @item.ten
-                    </a>
-                    <i class="fa fa-angle-right"></i>
-                </li>
-            }
-        
-       
-    </ul>
-</div>
+<ul class="topcatalog-list">
+
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="/Product/ProductCategory?categoryID=@item.ma_danh_muc">
+                @item.ten
+            </a>
+           
+        </li>
+    }
+</ul>
