@@ -1,0 +1,51 @@
+﻿@using WebsiteBanDienThoai.common.Helper
+@using Microsoft
+<div class="header-middle">
+    <div class="container header-middle-cont">
+        <div class="toplogo">
+            <a href="index.html">
+                <img src="~/Assets/img/logo/logo-dien-thoai(35).jpg">
+            </a>
+        </div>
+        <div class="shop-menu">
+            <ul>
+                <li class="topsearch">
+                    <a id="topsearch-btn" class="topsearch-btn" href="#"><i class="fa fa-search"></i></a>
+                    <form class="topsearch-form" action="#">
+                        <input type="text" placeholder="Search products">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.Identity.GetRole() != 1)
+                    {
+                        <li>
+                            <a href="@Url.Action("DashBoards","Admin")">Admin Panel</a>
+                        </li>
+                    }
+                    <li class="topauth">
+                        <a>@User.Identity.GetName()</a>
+                        <a href="@Url.Action("LogOut","Account")">Đăng xuất</a>
+                    </li>
+
+                }
+                else
+                {
+                    <li class="topauth">
+                        <a href="@Url.Action("Register","Account")">
+                            <i class="fa fa-lock"></i>
+                            <span class="shop-menu-ttl">Đăng kí</span>
+                        </a>
+                        <a href="@Url.Action("Login","Account")">
+                            <span class="shop-menu-ttl">Đăng nhập</span>
+                        </a>
+                    </li>
+
+                }
+                @Html.Partial("_CartInfo")
+
+            </ul>
+        </div>
+    </div>
+</div>

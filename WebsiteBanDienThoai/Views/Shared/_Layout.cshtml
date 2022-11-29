@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using WebsiteBanDienThoai.common.Helper
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -28,66 +29,11 @@
 </head>
 
 <body>
-    <!-- Header - start -->
     <header class="header">
-        <!-- Logo, Shop-menu - start -->
-        <div class="header-middle">
-            <div class="container header-middle-cont">
-                <div class="toplogo">
-                    <a href="index.html">
-                        <img src="~/Assets/img/logo/logo-dien-thoai(35).jpg">
-                    </a>
-                </div>
-                <div class="shop-menu">
-                    <ul>
-                        <li class="topsearch">
-                            <a id="topsearch-btn" class="topsearch-btn" href="#"><i class="fa fa-search"></i></a>
-                            <form class="topsearch-form" action="#">
-                                <input type="text" placeholder="Search products">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
-                        </li>
-                        <li class="topauth">
-                            <a href="auth.html">
-                                <i class="fa fa-lock"></i>
-                                <span class="shop-menu-ttl">Đăng kí</span>
-                            </a>
-                            <a href="auth.html">
-                                <span class="shop-menu-ttl">Đăng nhập</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <div class="h-cart">
-                                <a href="cart.html">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    <span class="shop-menu-ttl">Giỏ hàng</span> (
-                                    <b>0</b>)
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- Logo, Shop-menu - end -->
-        <!-- Topmenu - start -->
+        @Html.Partial("header_layout")
         <div class="header-bottom">
             <div class="container">
                 <nav class="topmenu">
-
-                    <!-- Catalog menu - start -->
-                    @*<div class="topcatalog">
-            <a class="topcatalog-btn" href="#">Danh mục SP</a>
-            <ul class="topcatalog-list">
-
-
-            </ul>
-        </div>*@
-                   
-                    <!-- Catalog menu - end -->
-                    <!-- Main menu - start -->
                     <button type="button" class="mainmenu-btn">Service</button>
 
                     <ul class="mainmenu">
@@ -96,10 +42,19 @@
                                 Trang Chủ
                             </a>
                         </li>
-                        <li>
-                            <a href="@Url.Action("ProductList","Product")">
-                               Sản Phẩm
-                            </a>
+                        <li class="menu-item-has-children">
+                            <a href="#"> Sản Phẩm <i class="fa fa-angle-down"></i> </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="@Url.Action("Iphone","Product")"> Iphone </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Samsung","Product")"> SamSung </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Xiaomi","Product")"> Xiaomi </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">
@@ -136,21 +91,12 @@
                         </li>
 
                     </ul>
-                    <!-- Main menu - end -->
-                    <!-- Search - start -->
-                    <!-- Search - end -->
-
                 </nav>
             </div>
-        </div>
-        <!-- Topmenu - end -->
-
     </header>
-    <!-- Header - end -->
-   @RenderBody()
-    <!-- Footer - start -->
+    @RenderBody()
     <footer class="footer-wrap">
-        <div class="container f-menu-list">
+        @*<div class="container f-menu-list">
             <div class="row">
                 <div class="f-menu">
                     <h3>
@@ -217,15 +163,13 @@
                         </li>
                     </ul>
                     <div class="footer-copyright">
-                        Make By Vương & Tỷ
+                        Truong
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
 
     </footer>
-    <!-- Footer - end -->
-    <!-- jQuery plugins/scripts - start -->
     <script src="~/Assets/js/jquery-1.11.2.min.js"></script>
     <script src="~/Assets/js/jquery.bxslider.min.js"></script>
     <script src="~/Assets/js/fancybox/fancybox.js"></script>
@@ -241,8 +185,7 @@
     <script src="~/Assets/js/main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhAYvx0GmLyN5hlf6Uv_e9pPvUT3YpozE"></script>
     <script src="~/Assets/js/gmap.js"></script>
-    <!-- jQuery plugins/scripts - end -->
-
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>

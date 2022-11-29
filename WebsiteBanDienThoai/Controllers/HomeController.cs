@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebsiteBanDienThoai.EF;
 using WebsiteBanDienThoai.Models;
 
 namespace WebsiteBanDienThoai.Controllers
 {
     public class HomeController : Controller
     {
-        dbKL4Entities db = new dbKL4Entities();
+        Model1 db = new Model1();
         public ActionResult Index()
         {
-            var listProductHome = db.SanPhams.ToList();
-            return View(listProductHome);
+            ViewBag.HotProduct = db.Products.Where(item =>item.hot == true && item.SoLuong !=0 ).Take(8).ToList();
+            ViewBag.Iphone = db.Products.Where(item => item.genre_id == 1 && item.SoLuong != 0 && item.brand_id==15).Take(4).ToList();
+            ViewBag.SamSung = db.Products.Where(item =>  item.genre_id == 1 && item.SoLuong != 0 && item.brand_id == 41).Take(4).ToList();
+            ViewBag.Xiaomi = db.Products.Where(item => item.genre_id == 1 && item.SoLuong != 0 && item.brand_id == 32).Take(4).ToList();
+            ViewBag.Oppo = db.Products.Where(item => item.genre_id == 1 && item.SoLuong != 0 && item.brand_id == 42).Take(4).ToList();
+
+            return View();
+        }
+        public ActionResult PageNotFound()
+        {
+            return View();
         }
 
     }

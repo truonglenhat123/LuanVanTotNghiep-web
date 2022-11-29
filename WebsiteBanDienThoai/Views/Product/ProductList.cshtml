@@ -1,6 +1,7 @@
-﻿@model List<WebsiteBanDienThoai.Models.SanPham>
+﻿@using PagedList
+@model IPagedList<WebsiteBanDienThoai.Models.Product>
 @{
-    ViewBag.Title = "ProductList";
+    ViewBag.Title = ViewBag.Type;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,7 +9,7 @@
     <section class="container">
 
 
-        @*<ul class="b-crumbs">
+        <ul class="b-crumbs">
             <li>
                 <a href="@Url.Action("ProductList","Product")">
                     Doanh mục SP
@@ -16,23 +17,43 @@
             </li>
             <li>
                 <a href="LapTop.html">
-                   
+                    @ViewBag.Type
                 </a>
             </li>
-        </ul>*@
+        </ul>
         <!-- Catalog Sidebar - start -->
         <div class="section-sb">
-
             <!-- Catalog Categories - start -->
             <div class="section-sb-current">
-                <h3><a href="">Danh mục sản phẩm<span id="section-sb-toggle" class="section-sb-toggle"><span class="section-sb-ico"></span></span></a></h3>
-                <h5>@Html.Action("CategoryMenu", "Product")</h5>
-               
+                <h3>
+                    <a href="#">
+                        Sản Phẩm
+                        <span id="section-sb-toggle" class="section-sb-toggle"><span class="section-sb-ico"></span></span>
+                    </a>
+                </h3>
+                <ul class="section-sb-list" id="section-sb-list">
+                    <li class="categ-1">
+                        <a href="@Url.Action("Iphone","Product")">
+                            <span class="categ-1-label">Iphone</span>
+                        </a>
+                    </li>
+                    <li class="categ-1">
+                        <a href="@Url.Action("Samsung","Product")">
+                            <span class="categ-1-label">SamSung</span>
+                        </a>
+                    </li>
+                    <li class="categ-1 has_child">
+                        <a href="@Url.Action("Xiaomi","Product")">
+                            <span class="categ-1-label">Xiaomi</span>
+                        </a>
+                    </li>
+                    <li class="categ-1 has_child">
+                        <a href="@Url.Action("Oppo","Product")">
+                            <span class="categ-1-label">Oppo</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <!-- Catalog Categories - end -->
-            <!-- Filter - start -->
-            <!-- Filter - end -->
-
         </div>
         <!-- Catalog Sidebar - end -->
         <!-- Catalog Items | Gallery V1 - start -->
@@ -50,51 +71,34 @@
 
                 <!-- Sorting -->
                 <div class="section-sortby">
-                    <p>Mặc định</p>
-                    <ul>
-                        <li>
-                            <a href="#">Sản phẩm nổi bật</a>
-                        </li>
-                        <li>
-                            <a href="#">Giá: Tăng dần</a>
-                        </li>
-                        <li>
-                            <a href="#">Giá: Giảm dần</a>
-                        </li>
-                        <li>
-                            <a href="#">Tên: A->Z <i class="fa fa-angle-right"></i> Z</a>
-                        </li>
-                        <li>
-                            <a href="#">Tên:Z->A<i class="fa fa-angle-right"></i> A</a>
-                        </li>
-                        <li>
-                            <a href="#">Mặc định</a>
-                        </li>
-                    </ul>
+                    <label class="mr-2">Sắp xếp:</label>
+                    <form action="#">
+                        <fieldset>
+                            <div id="sort-for" hidden>@ViewBag.SortBy</div>
+                            <select class="search">
+                                <option @(ViewBag.CurrentSort == ViewBag.ResetSort ? "selected" : "")>Mặc định</option>
+                                <option @(ViewBag.CurrentSort == ViewBag.PopularSort ? "selected" : "") value="@ViewBag.PopularSort"><a href=""> Sắp Xếp Theo Phổ Biến</a></option>
+                                <option @(ViewBag.CurrentSort == ViewBag.PriceDescSort ? "selected" : "") value="@ViewBag.PriceDescSort">Sắp Xếp Theo Giá: Cao - Thấp</option>
+                                <option @(ViewBag.CurrentSort == ViewBag.PriceAscSort ? "selected" : "") value="@ViewBag.PriceAscSort">Sắp Xếp Theo Giá: Thấp - Cao</option>
+                                <option @(ViewBag.CurrentSort == ViewBag.NameAscSort ? "selected" : "") value="@ViewBag.NameAscSort">Sắp Xếp Theo Tên: A - Z</option>
+                                <option @(ViewBag.CurrentSort == ViewBag.NameDescSort ? "selected" : "") value="@ViewBag.NameDescSort">Sắp Xếp Theo Tên: Z - A</option>
+                            </select>
+                        </fieldset>
+                    </form>
                 </div>
 
-                <!-- Count per page -->
                 <div class="section-count">
-                    <p>12</p>
-                    <ul>
-                        <li><a href="#">12</a></li>
-                        <li><a href="#">24</a></li>
-                        <li><a href="#">48</a></li>
-                    </ul>
+                    <span>Hiển thị @(ViewBag.Showing == 0?"0": "1 - "+ViewBag.Showing) trong @ViewBag.CountProduct kết quả tìm thấy</span>
                 </div>
 
             </div>
-            <!-- Catalog Topbar - end -->
             <div class="prod-items section-items">
                 @foreach (var item in Model)
                 {
                     <div class="prod-i">
                         <div class="prod-i-top">
-                            <a href="#" class="prod-i-img"><!-- NO SPACE --><img src="~/Assets/img/@item.hinh_anh" alt="Adipisci aperiam commodi"><!-- NO SPACE --></a>
-                            <!--<p class="prod-i-info">
-                                a href="#" class="qview-btn prod-i-qview"><span>Xem nhanh  </span><i class="fa fa-search"></i></a>
-                            </p>-->
-                            <a href="#" class="prod-i-buy">Thêm vào giỏ</a>
+                            <a href="#" class="prod-i-img"><!-- NO SPACE --><img src="~/Assets/img/@item.image" alt="Adipisci aperiam commodi"><!-- NO SPACE --></a>
+                            <a href="@item.ID" class="prod-i-buy">Thêm vào giỏ</a>
                             <p class="prod-i-properties-label"><i class="fa fa-info"></i></p>
 
                             <div class="prod-i-properties">
@@ -111,10 +115,10 @@
                             </div>
                         </div>
                         <h3>
-                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.maSP} , null)">@item.ten</a>
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)">@item.ProductName</a>
                         </h3>
                         <p class="prod-i-price">
-                            <b style="color: red">@item.gia_moi</b>
+                            <b style="color: red">@item.New_Price</b>
                         </p>
                     </div>
                 }
@@ -122,13 +126,13 @@
 
             </div>
 
-            <!-- Pagination - start -->
             <ul class="pagi">
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li class="pagi-next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                @*<li class="active"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li class="pagi-next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>*@
+                @Html.Partial("Pager", Model)
             </ul>
             <!-- Pagination - end -->
         </div>
@@ -299,8 +303,28 @@
                     </ul>
                 </div>
             </div>
+            <!--<ul class="pagi">-->
+            @*<li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li class="pagi-next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>*@
+            <!--@Html.Partial("Pager", Model)
+            </ul>-->
+            <div class="page-pagination text-center d-flex justify-content-center" data-aos="fade-up" data-aos-delay="0">
+                @Html.Partial("Pager", Model)
+            </div>
         </div>
         <!-- Quick View Product - end -->
     </section>
 </main>
-
+@section scripts{
+    <script>
+        $("select.search").change(function () {
+            let getSortBy = $('#sort-for').text();
+            const selected = $(this).children("option:selected").val();
+            window.location.href = getSortBy + 'sortOrder=' + selected;
+        });
+    </script>
+    <script src="~/Scripts/UserJS/add-to-cart.js"></script>
+}

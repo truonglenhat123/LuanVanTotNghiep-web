@@ -45,14 +45,6 @@ $(document).ready(function () {
             return false;
         $(this).parents('.fr-pop-tabs').find('li a').removeClass('active');
         $(this).addClass('active');
-
-        // mobile
-        $('.fr-pop-tab-mob[data-frpoptab-num=' + $(this).data('frpoptab-num') + ']').parents('.fr-pop-tab-cont').find('.fr-pop-tab-mob').removeClass('active');
-        $('.fr-pop-tab-mob[data-frpoptab-num=' + $(this).data('frpoptab-num') + ']').addClass('active');
-
-        $($(this).attr('data-frpoptab')).parents('.fr-pop-tab-cont').find('.fr-pop-tab').css('height', '0px');
-        $($(this).attr('data-frpoptab')).css('height', 'auto').hide().fadeIn();
-        return false;
     });
 
     // Popular Products Tabs (mobile)
@@ -170,45 +162,6 @@ $(document).ready(function () {
     $('body').on('click', '.mainmenu', function(event){
         event.stopPropagation();
     });
-
-    // Topmenu (mobile)
-    if ($(window).width() < 751) {
-        $('.topmenu .mainmenu li a .fa').on('click', function () {
-            if ($(this).parent().next('.sub-menu').hasClass('opened')) {
-                $(this).parent().next('.sub-menu').removeClass('opened');
-                $(this).parent().next('.sub-menu').slideUp();
-            } else {
-                $(this).parent().next('.sub-menu').addClass('opened');
-                $(this).parent().next('.sub-menu').slideDown();
-            }
-            return false;
-        });
-
-        $('.topcatalog').on('click', '.topcatalog-btn', function () {
-            if ($('body').hasClass('topcatalog-show')) {
-                $('body').removeClass('topcatalog-show');
-            } else {
-                $('body').addClass('topcatalog-show');
-            }
-                return false;
-        });
-        $('html').on('click', 'body.topcatalog-show', function () {
-            $('body').removeClass('topcatalog-show');
-        });
-        $('body').on('click', '.topcatalog-list', function(event){
-            event.stopPropagation();
-        });
-        $('.topcatalog li .fa').on('click', function () {
-            if ($(this).next('ul').hasClass('opened')) {
-                $(this).next('ul').removeClass('opened');
-                $(this).next('ul').slideUp();
-            } else {
-                $(this).next('ul').addClass('opened');
-                $(this).next('ul').slideDown();
-            }
-            return false;
-        });
-    }
 
     // Search Button
     $('.topsearch').on('click', '#topsearch-btn', function () {
@@ -379,59 +332,7 @@ $(document).ready(function () {
             return false;
         });
     }
-
-    // Forms Validation
-    var filterEmail  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,6})+$/;
-    $('.form-validate').submit(function () {
-        var errors = 0;
-        $(this).find('[data-required="text"]').each(function () {
-            if ($(this).attr('data-required-email') == 'email'){
-                if (!filterEmail.test($(this).val())) {
-                    $(this).addClass("redborder");
-                    errors++;
-                }
-                else {
-                    $(this).removeClass("redborder");
-                }
-                return;
-            }
-            if ($(this).val() == '') {
-                $(this).addClass('redborder');
-                errors++;
-            } else {
-                $(this).removeClass('redborder');
-            }
-        });
-        if (errors === 0) {
-            var form1 = $(this);
-            $.ajax({
-                type: "POST",
-                url: 'php/email.php',
-                data: $(this).serialize(),
-                success: function(data) {
-                    form1.append('<p class="form-result">Thank you!</p>');
-                    $("form").trigger('reset');
-                }
-            });
-        }
-        return false;
-    });
-    $('.form-validate').find('[data-required="text"]').blur(function () {
-        if ($(this).attr('data-required-email') == 'email' && ($(this).hasClass("redborder"))) {
-            if (filterEmail.test($(this).val()))
-                $(this).removeClass("redborder");
-            return;
-        }
-        if ($(this).val() != "" && ($(this).hasClass("redborder")))
-            $(this).removeClass("redborder");
-    });
-
-
 });
-
-
-
-
 $(window).load(function () {
 
     // Quick View button
@@ -728,11 +629,6 @@ $(window).load(function () {
 
 
 });
-/* PRODUCT V2 - end */
-
-
-
-
 // Compare List
 (function($) {
     $.fn.setDraggable = function() {
