@@ -22,7 +22,7 @@ namespace WebsiteBanDienThoai.EF
 
         public int delivery_id { get; set; }
 
-        public DateTime? oder_date { get; set; }
+        public DateTime oder_date { get; set; }
 
         public double total { get; set; }
 

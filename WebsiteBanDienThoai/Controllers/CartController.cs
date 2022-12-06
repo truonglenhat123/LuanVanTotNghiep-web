@@ -17,29 +17,29 @@ namespace WebsiteBanDienThoai.Controllers
             
             return View();
         }
-        //public ActionResult Add(int id)//theme vao gio hang
-        //{
-        //    CartItem.Cart.Add(id);
-        //    return RedirectToAction("Index", "Home");
-        //}
-        //public ActionResult Remove(int id)//Xoas khoi gio hang
-        //{
-        //    CartItem.Cart.Remove(id);
-        //    return RedirectToAction("Index");
-        //}
-        //public ActionResult Update()//theme vao gio hang
-        //{
-        //    foreach (var p in CartItem.Cart.Items)
-        //    {
-        //        p.SoLuong = int.Parse(Request[p.ID.ToString()]);
-        //    }
-        //    return RedirectToAction("Index");
-        //}
-        //public ActionResult Clear()//clear vao gio hang
-        //{
-        //    CartItem.Cart.Clear();
-        //    return RedirectToAction("Index");
-        //}
+        public ActionResult Add(int id)//theme vao gio hang
+        {
+            ShoppingCart.Cart.Add(id);
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Remove(int id)//Xoas khoi gio hang
+        {
+            ShoppingCart.Cart.Remove(id);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Update()//theme vao gio hang
+        {
+            foreach (var p in ShoppingCart.Cart.Items)
+            {
+                p.SoLuong = int.Parse(Request[p.ID.ToString()]);
+            }
+            return RedirectToAction("Index");
+        }
+        public ActionResult Clear()//clear vao gio hang
+        {
+            ShoppingCart.Cart.Clear();
+            return RedirectToAction("Index");
+        }
 
     }
 }

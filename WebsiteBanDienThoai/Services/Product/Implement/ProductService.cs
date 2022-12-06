@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using WebsiteBanDienThoai.EF;
 using WebsiteBanDienThoai.Models;
+using FeedbackNew = WebsiteBanDienThoai.EF.FeedbackNew;
 
 namespace WebsiteBanDienThoai.Services.Product.Implement
 {
@@ -12,17 +13,17 @@ namespace WebsiteBanDienThoai.Services.Product.Implement
         Model1 db = new Model1();
         public void AddFeedback(AddFeedback addFeedback)
         {
-            //FeedbackNew fb = new FeedbackNew();
-            //fb.product_id = addFeedback.ProductId;
-            //fb.Name = addFeedback.Name;
-            //fb.PhoneNumber = addFeedback.PhoneNumber;
-            //fb.Email = addFeedback.Email;
-            //fb.Content = addFeedback.Content;
-            //fb.RateStar = addFeedback.RateStar;
-            //fb.CreateTime  = DateTime.Now;
+            FeedbackNew fb = new FeedbackNew();
+            fb.product_id = addFeedback.ProductId;
+            fb.Name = addFeedback.Name;
+            fb.PhoneNumber = addFeedback.PhoneNumber;
+            fb.Email = addFeedback.Email;
+            fb.Content = addFeedback.Content;
+            fb.RateStar = addFeedback.RateStar;
+            fb.CreateTime = DateTime.Now;
 
-            //db.FeedbackNews.Add(fb);
-            //db.SaveChanges();
+            db.FeedbackNews.Add(fb);
+            db.SaveChanges();
         }
     }
 }

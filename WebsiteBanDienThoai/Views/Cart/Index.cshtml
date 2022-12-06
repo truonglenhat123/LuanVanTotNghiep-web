@@ -1,24 +1,26 @@
-﻿
+﻿@using WebsiteBanDienThoai.common.Helper;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var Cart = WebsiteBanDienThoai.Models.CartItem.Cart;
+    var Cart = WebsiteBanDienThoai.Models.ShoppingCart.Cart;
 }
 
-    <main>
-        <section class="container stylization maincont">
+<main>
+    <section class="container stylization maincont">
 
 
-            <ul class="b-crumbs">
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <span>Cart</span>
-                </li>
-            </ul>
+        <ul class="b-crumbs">
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+            <li>
+                <span>Cart</span>
+            </li>
+        </ul>
+        @using (Html.BeginForm())
+        {
             <h1 class="main-ttl"><span>Cart</span></h1>
             <!-- Cart Items - start -->
             <form action="#">
@@ -36,52 +38,51 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(var item in Cart.Items)
+                            @foreach (var item in Cart.Items)
                             {
 
 
-                            <tr>
-                                <td class="cart-image">
-                                    <a href="#">
-                                        <img src="~/Assets/img/@item.image">
-                                    </a>
-                                </td>
-                                <td class="cart-ttl">
-                                    <a href="product.html">@item.ProductName</a>
-                                </td>
-                                <td class="cart-price">
-                                    <b>@Html.FormatValue(item.New_Price,"{0:c}")</b>
-                                </td>
-                                <td class="cart-quantity">
-                                    @Html.TextBox(item.ID.ToString(),item.SoLuong)
-                                    
-                                </td>
-                                <td class="cart-summ">
-                                    <b>@Html.FormatValue(item.SoLuong * item.New_Price,"{0:c}")</b>
-                                    <p class="cart-forone">unit price <b>@Html.FormatValue(item.SoLuong * item.New_Price, "{0:c}")</b></p>
-                                </td>
-                                <td class="cart-del">
-                                    <a href="/Cart/Remove/@item.ID" class="cart-remove"></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="cart-image">
+                                        <a href="#">
+                                            <img src="~/Assets/img/@item.image">
+                                        </a>
+                                    </td>
+                                    <td class="cart-ttl">
+                                        <a href="product.html">@item.ProductName</a>
+                                    </td>
+                                    <td class="cart-price">
+                                        <b>@Html.FormatValue(item.New_Price, "{0:c}")</b>
+                                    </td>
+                                    <td class="cart-quantity">
+                                        @Html.TextBox(item.ID.ToString(), item.SoLuong)
+
+                                    </td>
+                                    <td class="cart-summ">
+                                        <b>@Html.FormatValue(item.SoLuong * item.New_Price, "{0:c}")</b>
+                                        <p class="cart-forone">unit price <b>@Html.FormatValue(item.SoLuong * item.New_Price, "{0:c}")</b></p>
+                                    </td>
+                                    <td class="cart-del">
+                                        <a href="/Cart/Remove/@item.ID" class="cart-remove"></a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
                 </div>
                 <ul class="cart-total">
-                    <li class="cart-summ">Tổng : <b>@Html.FormatValue(Cart.Total,"{0:c}")</b></li>
+                    <li class="cart-summ">Tổng : <b>@Html.FormatValue(Cart.Total, "{0:c}")</b></li>
                 </ul>
                 <div class="cart-submit">
-                    <div class="cart-coupon">
-                        <input placeholder="your coupon" type="text">
-                        <a class="cart-coupon-btn" href="#"><img src="img/ok.png" alt="your coupon"></a>
-                    </div>
-                    <a href="#" class="cart-submit-btn">Thanh toán</a>
-                    <a href="#" class="cart-clear">Clear cart</a>
+
+                    <a href="/Order/Checkout" class="cart-submit-btn">Thanh toán</a>
+                    @Html.Submit("Cập nhật giỏ hàng", "/Cart/Update")
+                    @Html.Submit("Xóa sạch giỏ hàng", "/Cart/Clear")
                 </div>
             </form>
-            <!-- Cart Items - end -->
+        }
+        <!-- Cart Items - end -->
 
-        </section>
-    </main>
+    </section>
+</main>
 

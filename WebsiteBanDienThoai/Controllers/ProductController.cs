@@ -176,7 +176,8 @@ namespace WebsiteBanDienThoai.Controllers
         public ActionResult AddReview(AddFeedback addFeedback)
         {
             _productService.AddFeedback(addFeedback);
-            return null;
+            string message = "SUCCESS";
+            return Json(new { Message = message, JsonRequestBehavior.AllowGet });
         }
 
     }

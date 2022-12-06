@@ -1,11 +1,16 @@
 ﻿@model WebsiteBanDienThoai.Models.ChiTietSanPham
+@using WebsiteBanDienThoai.common
 @{
     ViewBag.Title = "ChiTietSanPham";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    var relatedproduct = (List<WebsiteBanDienThoai.EF.Product>)ViewBag.relatedproduct;
+    var listFeedback = (List<WebsiteBanDienThoai.EF.FeedbackNew>)ViewBag.ListFeedback;
+    var listReplyFeedback = (List<WebsiteBanDienThoai.EF.Replyfeedback>)ViewBag.ListReplyFeedback;
 
+}
 <main>
     <section class="container">
+
 
         <ul class="b-crumbs">
             <li>
@@ -27,7 +32,7 @@
                 <span>Aperiam nihil veniam</span>
             </li>
         </ul>
-        <h1 class="main-ttl"><span>@Model.ten</span></h1>
+        <h1 class="main-ttl"><span>@Model.Product.ProductName</span></h1>
         <!-- Single Product - start -->
         <div class="prod-wrap">
 
@@ -37,12 +42,7 @@
                     <ul class="prod-slider-car">
                         <li>
                             <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x642">
-                                <img src="~/Assets/img/@Model.hinh_anh" alt="">
-                            </a>
-                        </li>
-                        @*<li>
-                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
-                                <img src="http://placehold.it/500x722" alt="">
+                                <img src="http://placehold.it/500x642" alt="">
                             </a>
                         </li>
                         <li>
@@ -74,7 +74,12 @@
                             <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
                                 <img src="http://placehold.it/500x722" alt="">
                             </a>
-                        </li>*@
+                        </li>
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
+                                <img src="http://placehold.it/500x722" alt="">
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="prod-thumbs">
@@ -126,7 +131,7 @@
             <!-- Product Description/Info -->
             <div class="prod-cont">
                 <div class="prod-cont-txt">
-                    Quis temporibus hic reprehenderit explicabo odio earum maxime cupiditate mollitia magni laboriosam illum adipisci, ipsam, repellendus optio esse dolorem incidunt debitis eius voluptate expedita assumenda
+                    @Model.Product.Descriptionshort
                 </div>
                 <p class="prod-actions">
                     <a href="#" class="prod-favorites"><i class="fa fa-heart"></i> Wishlist</a>
@@ -167,7 +172,7 @@
                 </div>
                 <div class="prod-info">
                     <p class="prod-price">
-                        <b class="item_current_price">@Model.gia_moi</b>
+                        <b class="item_current_price">@Model.Product.New_Price</b>
                     </p>
                     <p class="prod-qnt">
                         <input value="1" type="text">
@@ -180,34 +185,31 @@
                 </div>
                 <ul class="prod-i-props">
                     <li>
-                        <b>Kích thước màn hình</b> @Model.kichThuocManHinh
+                        <b>SKU</b> 05464207
                     </li>
                     <li>
-                        <b>Độ phân giải màn hinh</b> @Model.dophangiaiManHinh
+                        <b>Material</b> Nylon
                     </li>
                     <li>
-                        <b>CPU</b> @Model.CPU
+                        <b>Pattern Type</b> Solid
                     </li>
                     <li>
-                        <b>Bộ nhớ trong</b> @Model.bonhotrong
+                        <b>Wash</b> Colored
                     </li>
                     <li>
-                        <b>Camera Trước</b> @Model.cameraTruoc
+                        <b>Style</b> Sport
                     </li>
                     <li>
-                        <b>Camera Sau</b> @Model.cameraSau
+                        <b>Color</b> Blue
                     </li>
                     <li>
-                        <b>Hệ điều hành</b> @Model.heDieuHanh
+                        <b>Gender</b> Unisex
                     </li>
                     <li>
-                        <b>Pin</b> @Model.pin
+                        <b>Rain Cover</b> No
                     </li>
                     <li>
-                        <b>Ram</b>@Model.ram
-                    </li>
-                    <li>
-                        <b>Sim</b>@Model.sim
+                        <b>Exterior</b> Solid Bag
                     </li>
                     <li><a href="#" class="prod-showprops">All Features</a></li>
                 </ul>
@@ -218,56 +220,120 @@
                 <ul class="prod-tabs">
                     <li><a data-prodtab-num="1" class="active" href="#" data-prodtab="#prod-tab-1">Description</a></li>
                     <li><a data-prodtab-num="2" id="prod-props" href="#" data-prodtab="#prod-tab-2">Features</a></li>
+                    <li><a data-prodtab-num="5" href="#" data-prodtab="#prod-tab-5">Reviews (3)</a></li>
                 </ul>
                 <div class="prod-tab-cont">
 
                     <p data-prodtab-num="1" class="prod-tab-mob active" data-prodtab="#prod-tab-1">Description</p>
                     <div class="prod-tab stylization" id="prod-tab-1">
-                        <p>@Model.mota</p>
-                        
+                        <p>@Model.Product.Description</p>
                     </div>
                     <p data-prodtab-num="2" class="prod-tab-mob" data-prodtab="#prod-tab-2">Features</p>
                     <div class="prod-tab prod-props" id="prod-tab-2">
                         <table>
                             <tbody>
                                 <tr>
-                                    <td>Kích thước màn hình</td>
-                                    <td>@Model.kichThuocManHinh</td>
+                                    <td>SKU</td>
+                                    <td>05464207</td>
                                 </tr>
                                 <tr>
-                                    <td>Độ phân giải màn hình</td>
-                                    <td>@Model.dophangiaiManHinh</td>
+                                    <td>Material</td>
+                                    <td>Nylon</td>
                                 </tr>
                                 <tr>
-                                    <td>CPU</td>
-                                    <td>@Model.CPU</td>
+                                    <td>Pattern Type</td>
+                                    <td>Solid</td>
                                 </tr>
                                 <tr>
-                                    <td>Camera trước</td>
-                                    <td>@Model.cameraTruoc</td>
+                                    <td>Wash</td>
+                                    <td>Colored</td>
                                 </tr>
                                 <tr>
-                                    <td>Camera sau</td>
-                                    <td>@Model.cameraSau</td>
+                                    <td>Style</td>
+                                    <td>Sport</td>
                                 </tr>
                                 <tr>
-                                    <td>Hệ điều hành</td>
-                                    <td>@Model.heDieuHanh</td>
+                                    <td>Color</td>
+                                    <td>Blue</td>
                                 </tr>
                                 <tr>
-                                    <td>Pin</td>
-                                    <td>@Model.pin</td>
+                                    <td>Gender</td>
+                                    <td>Unisex</td>
                                 </tr>
                                 <tr>
-                                    <td>Ram</td>
-                                    <td>@Model.ram</td>
+                                    <td>Rain Cover</td>
+                                    <td>No</td>
                                 </tr>
                                 <tr>
-                                    <td>Sim</td>
-                                    <td>@Model.sim</td>
+                                    <td>Exterior</td>
+                                    <td>Solid Bag</td>
+                                </tr>
+                                <tr>
+                                    <td>Closure Type</td>
+                                    <td>Zipper</td>
+                                </tr>
+                                <tr>
+                                    <td>Handle/Strap Type</td>
+                                    <td>Soft Handle</td>
+                                </tr>
+                                <tr>
+                                    <td>Size</td>
+                                    <td>33cm x 18cm x 48cm</td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <p data-prodtab-num="5" class="prod-tab-mob" data-prodtab="#prod-tab-5">Reviews</p>
+                    <div class="prod-tab" id="prod-tab-5">
+                        <ul id="list-review" class="reviews-list">
+                            @foreach (var item in listFeedback)
+                            {
+                                <li class="reviews-i existimg">
+                                    <div class="reviews-i-img">
+                                        <img src="http://placehold.it/120x120" alt="Averill Sidony">
+                                        <div class="reviews-i-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <time datetime="2017-12-21 12:19:46" class="reviews-i-date">@item.CreateTime</time>
+                                    </div>
+                                    <div class="reviews-i-cont">
+                                        <p>@item.Content</p>
+                                        <span class="reviews-i-margin"></span>
+                                        <h3 class="reviews-i-ttl">@item.Name</h3>
+                                        <p class="reviews-i-showanswer"><span data-open="Show answer" data-close="Hide answer">Show answer</span> <i class="fa fa-angle-down"></i></p>
+                                    </div>
+                                    @*@foreach (var a in listReplyFeedback)
+                                    {
+
+
+                                        <div class="reviews-i-answer">
+                                            <p>
+                                                @a.content
+                                            </p>
+                                            <span class="reviews-i-margin"></span>
+                                        </div>
+                                    }*@
+                                </li>
+                            }
+                        </ul>
+
+                        <div class="prod-comment-form">
+                            <h3>Add your review</h3>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => model.AddFeedback.ProductId, new { id="product-id", Value = Model.Product.ID })
+                                @Html.TextBoxFor(model => model.AddFeedback.Name, new { id = "name", type = "text", placeHolder = "name" })
+                                @Html.TextBoxFor(model => model.AddFeedback.Email, new { id = "email", type = "text", placeHolder = "email" })
+                                @Html.TextBoxFor(model => model.AddFeedback.Content, new { id = "content", type = "text", placeHolder = "content" })
+                                <input id="btnSubmitCmt" type="button" value="Submit" class="btn btn-success" />
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -282,12 +348,12 @@
                     <li class="prod-rel-wrap">
                         <div class="prod-rel">
                             <a href="product.html" class="prod-rel-img">
-                                <img src="~/Assets/img/@Model.hinh_anh" alt="Adipisci aperiam commodi">
+                                <img src="http://placehold.it/300x311" alt="Adipisci aperiam commodi">
                             </a>
                             <div class="prod-rel-cont">
-                                <h3><a href="product.html">@Model.ten</a></h3>
+                                <h3><a href="product.html">Adipisci aperiam commodi</a></h3>
                                 <p class="prod-rel-price">
-                                    <b>@Model.gia_moi</b>
+                                    <b>$59</b>
                                 </p>
                                 <div class="prod-rel-actions">
                                     <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
@@ -301,7 +367,7 @@
 
 
 
-                        @*<div class="prod-rel">
+                        <div class="prod-rel">
                             <a href="product.html" class="prod-rel-img">
                                 <img src="http://placehold.it/300x366" alt="Nulla numquam obcaecati">
                             </a>
@@ -360,7 +426,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>*@
+                        </div>
 
                     </li>
                     <li class="prod-rel-wrap">
@@ -496,3 +562,90 @@
 
     </section>
 </main>
+@section scripts{
+    <script type="text/javascript">
+
+    $(function () {
+        //LoadData();
+        $("#btnSubmitCmt").click(function () {
+            var std = {};
+            std.productId = $("#product-id").val();
+            std.name = $("#name").val();
+            std.email = $("#email").val();
+            std.content = $("#content").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddReview", "Product")',
+                data: '{addFeedback: ' + JSON.stringify(std) + '}',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    addReview(std.content, std.name);
+                    $("#name").val('');
+                    $("#email").val('');
+                    $("#content").val('');
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                }
+            });
+            return false;
+        });
+    });
+
+        function addReview(content, name) {
+            var stringNewReview = '';
+            stringNewReview += '<li class="reviews-i existimg">'
+            stringNewReview += '<div class="reviews-i-img">'
+            stringNewReview += '<img src="http://placehold.it/120x120" alt="Averill Sidony">'
+            stringNewReview += '<div class="reviews-i-rating">'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '</div>'
+            stringNewReview += '<time datetime="2017-12-21 12:19:46" class="reviews-i-date">' + Date().toString("MM/dd/yyyy HH:mm:ss") +'</time>'
+            stringNewReview += '</div>'
+            stringNewReview += '<div class="reviews-i-cont">'
+            stringNewReview += '<p>'+content+'</p>'
+            stringNewReview += '<span class="reviews-i-margin"></span>'
+            stringNewReview += '<h3 class="reviews-i-ttl">'+name+'</h3>'
+            stringNewReview += '<p class="reviews-i-showanswer">'
+            stringNewReview += '<span data-open="Show answer" data-close="Hide answer" > Show answer</span>'
+            stringNewReview += '<i class="fa fa-angle-down"></i ></p>'
+            stringNewReview += '</div>'
+            stringNewReview += '</li>'
+
+            $('#list-review').append(stringNewReview);
+        }
+
+    @*function LoadData() {
+        $("#tblStudent tbody tr").remove();
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("getStudent")',
+            dataType: 'json',
+            data: { id: '' },
+            success: function (data) {
+                var items = '';
+                $.each(data, function (i, item) {
+                    var rows = "<tr>"
+                    + "<td class='prtoducttd'>" + item.studentID + "</td>"
+                    + "<td class='prtoducttd'>" + item.studentName + "</td>"
+                    + "<td class='prtoducttd'>" + item.studentAddress + "</td>"
+                    + "</tr>";
+                    $('#tblStudent tbody').append(rows);
+                });
+            },
+            error: function (ex) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+    }*@
+    </script>
+}

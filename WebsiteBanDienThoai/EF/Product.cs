@@ -28,7 +28,7 @@ namespace WebsiteBanDienThoai.EF
 
         public double? Old_Price { get; set; }
 
-        public double? New_Price { get; set; }
+        public double New_Price { get; set; }
 
         [StringLength(500)]
         public string image { get; set; }
@@ -79,7 +79,7 @@ namespace WebsiteBanDienThoai.EF
         [StringLength(500)]
         public string CPU { get; set; }
 
-        public int? SoLuong { get; set; }
+        public int SoLuong { get; set; }
 
         public int? brand_id { get; set; }
 

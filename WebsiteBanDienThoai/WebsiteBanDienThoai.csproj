@@ -147,10 +147,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="common\Authentication.cs" />
     <Compile Include="common\Const.cs" />
     <Compile Include="common\CustomRoleProvider.cs" />
     <Compile Include="common\Helper\AuthHelper.cs" />
+    <Compile Include="common\Helper\XHtmlHelper.cs" />
     <Compile Include="common\LoginData.cs" />
     <Compile Include="common\Message\Message.cs" />
     <Compile Include="common\Message\MessageModel.cs" />
@@ -186,12 +189,16 @@
     <Compile Include="Models\ChiTietSanPham.cs" />
     <Compile Include="Models\FeedbackNew.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Product\Implement\ProductService.cs" />
     <Compile Include="Services\Product\Interface\IProductService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\AssetAdmin\css\css_admin.css" />
+    <Content Include="Areas\Admin\AssetAdmin\css\grid.css" />
+    <Content Include="Areas\Admin\AssetAdmin\js\app.js" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\flexslider.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
@@ -329,6 +336,9 @@
     <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -354,7 +364,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Category.cshtml" />
     <Content Include="Views\Product\ChiTietSanPham.cshtml" />
-    <Content Include="Views\Product\ProductCategory.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\Shared\Pager.cshtml" />
@@ -366,6 +375,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
