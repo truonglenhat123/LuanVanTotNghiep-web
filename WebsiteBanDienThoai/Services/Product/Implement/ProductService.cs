@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using WebsiteBanDienThoai.EF;
 using WebsiteBanDienThoai.Models;
-using FeedbackNew = WebsiteBanDienThoai.EF.FeedbackNew;
+using FeedbackNew = WebsiteBanDienThoai.EF.Feedback;
 
 namespace WebsiteBanDienThoai.Services.Product.Implement
 {
     public class ProductService : IProductService
     {
-        Model1 db = new Model1();
+        dbFinal db = new dbFinal();
         public void AddFeedback(AddFeedback addFeedback)
         {
             FeedbackNew fb = new FeedbackNew();
@@ -20,9 +20,9 @@ namespace WebsiteBanDienThoai.Services.Product.Implement
             fb.Email = addFeedback.Email;
             fb.Content = addFeedback.Content;
             fb.RateStar = addFeedback.RateStar;
-            fb.CreateTime = DateTime.Now;
+            fb.create_at = DateTime.Now;
 
-            db.FeedbackNews.Add(fb);
+            db.Feedbacks.Add(fb);
             db.SaveChanges();
         }
     }

@@ -9,7 +9,7 @@ namespace WebsiteBanDienThoai.Areas.Admin.Controllers
 {
     public class DashboardController : Controller
     {
-        public Model1 db = new Model1();
+        public dbFinal db = new dbFinal();
         // GET: Admin/Home
         public ActionResult Index()
         {

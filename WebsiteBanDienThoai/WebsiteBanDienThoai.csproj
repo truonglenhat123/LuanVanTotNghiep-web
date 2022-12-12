@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -46,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -148,7 +149,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GenresController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsAdminController.cs" />
     <Compile Include="common\Authentication.cs" />
     <Compile Include="common\Const.cs" />
     <Compile Include="common\CustomRoleProvider.cs" />
@@ -163,31 +167,28 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="EF\Account.cs" />
     <Compile Include="EF\Brand.cs" />
     <Compile Include="EF\Contact.cs" />
     <Compile Include="EF\Customer.cs" />
+    <Compile Include="EF\dbFinal.cs" />
     <Compile Include="EF\Discount.cs" />
     <Compile Include="EF\employee.cs" />
     <Compile Include="EF\Feedback.cs" />
-    <Compile Include="EF\FeedbackNew.cs" />
     <Compile Include="EF\Genre.cs" />
-    <Compile Include="EF\Model1.cs" />
     <Compile Include="EF\Oder_Detail.cs" />
     <Compile Include="EF\Order.cs" />
     <Compile Include="EF\Payment.cs" />
     <Compile Include="EF\Product.cs" />
-    <Compile Include="EF\ProductImage.cs" />
-    <Compile Include="EF\Replyfeedback.cs" />
-    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddFeedback.cs" />
     <Compile Include="Models\ChiTietSanPham.cs" />
-    <Compile Include="Models\FeedbackNew.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\User.cs" />
@@ -196,9 +197,30 @@
     <Compile Include="Services\Product\Interface\IProductService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\AssetAdmin\css\css_admin.css" />
-    <Content Include="Areas\Admin\AssetAdmin\css\grid.css" />
-    <Content Include="Areas\Admin\AssetAdmin\js\app.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\PagedList.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\plugins.bundle.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\style.bundle.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\vis-timeline.bundle.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\auth.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\brands.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\discounts.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\genres.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\orders.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\plugins.bundle.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\products.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\repry-feedback.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\scripts.bundle.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\vis-timeline.bundle.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\widgets.bundle.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\widgets.js" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\flexslider.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
@@ -338,7 +360,54 @@
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\LayoutAdmin.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\bootstrap-icons\bootstrap-icons.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\bootstrap-icons\bootstrap-icons.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\Shared\_FooterLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_HeaderLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -372,10 +441,13 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_CartInfo.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="DAO\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -426,7 +498,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

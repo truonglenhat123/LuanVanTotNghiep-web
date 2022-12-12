@@ -1,0 +1,59 @@
+﻿@model WebsiteBanDienThoai.EF.Brand
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Brand</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.brand_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brand_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.update_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.update_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.update_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.update_at)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.brand_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -13,7 +13,7 @@ namespace WebsiteBanDienThoai.Controllers
 {
     public class AccountController : Controller
     {
-        Model1 db = new Model1();
+        dbFinal db = new dbFinal();
         // GET: Account
         public ActionResult Login(string returnUrl)
         {

@@ -18,11 +18,9 @@ namespace WebsiteBanDienThoai.EF
         [Key]
         public int order_id { get; set; }
 
-        public int payment_id { get; set; }
+        public int? payment_id { get; set; }
 
-        public int delivery_id { get; set; }
-
-        public DateTime oder_date { get; set; }
+        public DateTime? oder_date { get; set; }
 
         public double total { get; set; }
 
@@ -49,6 +47,14 @@ namespace WebsiteBanDienThoai.EF
         public int employee_id { get; set; }
 
         public int customer_id { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string addressShipping { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string phoneShipping { get; set; }
 
         public virtual Account Account { get; set; }
 

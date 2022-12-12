@@ -12,9 +12,7 @@ namespace WebsiteBanDienThoai.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
-            Feedbacks = new HashSet<Feedback>();
             Orders = new HashSet<Order>();
-            Replyfeedbacks = new HashSet<Replyfeedback>();
         }
 
         [Key]
@@ -56,12 +54,6 @@ namespace WebsiteBanDienThoai.EF
         public int Role { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Replyfeedback> Replyfeedbacks { get; set; }
     }
 }

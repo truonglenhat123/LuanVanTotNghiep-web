@@ -24,7 +24,7 @@ namespace WebsiteBanDienThoai.Controllers
     {
         private IProductService _productService = new ProductService();
 
-        Model1 db = new Model1();
+        dbFinal db = new dbFinal();
 
         public ActionResult Iphone(int? page, string sortOrder)
         {
@@ -97,79 +97,22 @@ namespace WebsiteBanDienThoai.Controllers
             ViewBag.Showing = list.Count();
             return list;
         }
-        public ActionResult ChiTietSanPham(int id, int? page)
+        public ActionResult ChiTietSanPham(int id)
         {
-            int pagesize = 1;
-            int cpage = page ?? 1;
             var product = db.Products.SingleOrDefault(m => m.status == "1" && m.ID == id);
             if (product == null)
             {
                 return Redirect("/");
             }
-            var feedbacks = db.FeedbackNews.Where(x => x.product_id == id).ToList();
+            var feedbacks = db.Feedbacks.Where(x => x.product_id == id).ToList();
             ViewBag.relatedproduct = db.Products.Where(item => item.status == "1" && item.ID != product.ID && item.genre_id == product.genre_id && item.brand_id == product.brand_id).Take(8).ToList();
-            ViewBag.ProductImage = db.ProductImages.Where(item => item.product_img_id == id).ToList();
             //ViewBag.ListFeedback = db.Feedbacks.Where(m => m.stastus == "2").ToList();
             ViewBag.ListFeedback = feedbacks;
-            ViewBag.ListReplyFeedback = db.Replyfeedbacks.Where(m => m.stastus == "2").ToList();
-            ViewBag.CountFeedback = db.Feedbacks.Where(m => m.stastus == "2" && m.product_id == product.ID).Count();
+            ViewBag.CountFeedback = db.Feedbacks.Where(m => m.product_id == product.ID).Count();
 
             ChiTietSanPham ctsp = new ChiTietSanPham();
             ctsp.Product = product;
             return View(ctsp);
-        }
-        [ValidateInput(false)]
-        [HttpPost]
-        public JsonResult ProductComment(Feedback comment, int productID, int discountID, int genreID, int rateStar, string commentContent)
-        {
-            bool result = false;
-            int userID = User.Identity.GetUserId();
-            if (User.Identity.IsAuthenticated)
-            {
-                comment.account_id = userID;
-                comment.rate_star = rateStar;
-                comment.product_id = productID;
-                comment.disscount_id = discountID;
-                comment.genre_id = genreID;
-                comment.content = commentContent;
-                comment.stastus = "2";
-                comment.create_at = DateTime.Now;
-                comment.update_at = DateTime.Now;
-                comment.create_by = userID.ToString();
-                comment.update_by = userID.ToString();
-                db.Feedbacks.Add(comment);
-                db.SaveChanges();
-                result = true;
-                Message.setNotification3s("Bình luận thành công", "success");
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-        }
-        [HttpPost]
-        [ValidateInput(false)]
-        public JsonResult ReplyComment(int id, string reply_content, Replyfeedback reply)
-        {
-            bool result = false;
-            if (User.Identity.IsAuthenticated)
-            {
-                reply.feedback_id = id;
-                reply.account_id = User.Identity.GetUserId();
-                reply.content = reply_content;
-                reply.stastus = "2";
-                reply.create_at = DateTime.Now;
-                db.Replyfeedbacks.Add(reply);
-                db.SaveChanges();
-                result = true;
-                Message.setNotification3s("Phản hồi thành công", "success");
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
         }
 
         [HttpPost]

@@ -8,7 +8,7 @@ namespace WebsiteBanDienThoai.Models
 {
     public class ShoppingCart
     {
-        Model1 db = new Model1();
+        dbFinal db = new dbFinal();
         public static ShoppingCart Cart
         {
             get { 
@@ -33,7 +33,7 @@ namespace WebsiteBanDienThoai.Models
             catch (Exception)
             {
 
-                var db = new Model1();
+                var db = new dbFinal();
                 var p = db.Products.Find(id);
                 p.SoLuong = 1;
                 Items.Add(p);
@@ -53,7 +53,7 @@ namespace WebsiteBanDienThoai.Models
         public double Total
         {
             get{
-                return Items.Sum(p => p.New_Price * p.SoLuong);
+                return (double)Items.Sum(p => p.New_Price * p.SoLuong);
             }
         }
         public int Count
@@ -74,7 +74,7 @@ namespace WebsiteBanDienThoai.Models
                     Order = order,
                     product_id = item.ID,
                     price = item.New_Price,
-                    quantity = item.SoLuong
+                    quantity = (int)item.SoLuong
                 };
                 db.Oder_Detail.Add(detail);
             }

@@ -4,8 +4,7 @@
     ViewBag.Title = "ChiTietSanPham";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var relatedproduct = (List<WebsiteBanDienThoai.EF.Product>)ViewBag.relatedproduct;
-    var listFeedback = (List<WebsiteBanDienThoai.EF.FeedbackNew>)ViewBag.ListFeedback;
-    var listReplyFeedback = (List<WebsiteBanDienThoai.EF.Replyfeedback>)ViewBag.ListReplyFeedback;
+    var listFeedback = (List<WebsiteBanDienThoai.EF.Feedback>)ViewBag.ListFeedback;
 
 }
 <main>
@@ -42,88 +41,10 @@
                     <ul class="prod-slider-car">
                         <li>
                             <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x642">
-                                <img src="http://placehold.it/500x642" alt="">
+                                <img src="~/Assets/img/@Model.Product.image" alt="">
                             </a>
                         </li>
-                        <li>
-                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x722">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="prod-thumbs">
-                    <ul class="prod-thumbs-car">
-                        <li>
-                            <a data-slide-index="0" href="#">
-                                <img src="http://placehold.it/500x642" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-slide-index="1" href="#">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-slide-index="2" href="#">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-slide-index="3" href="#">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-slide-index="4" href="#">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-slide-index="5" href="#">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-slide-index="6" href="#">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a data-slide-index="7" href="#">
-                                <img src="http://placehold.it/500x722" alt="">
-                            </a>
-                        </li>
+                      
                     </ul>
                 </div>
             </div>
@@ -132,43 +53,6 @@
             <div class="prod-cont">
                 <div class="prod-cont-txt">
                     @Model.Product.Descriptionshort
-                </div>
-                <p class="prod-actions">
-                    <a href="#" class="prod-favorites"><i class="fa fa-heart"></i> Wishlist</a>
-                    <a href="#" class="prod-compare"><i class="fa fa-bar-chart"></i> Compare</a>
-                </p>
-                <div class="prod-skuwrap">
-                    <p class="prod-skuttl">Color</p>
-                    <ul class="prod-skucolor">
-                        <li class="active">
-                            <img src="img/color/blue.jpg" alt="">
-                        </li>
-                        <li>
-                            <img src="img/color/red.jpg" alt="">
-                        </li>
-                        <li>
-                            <img src="img/color/green.jpg" alt="">
-                        </li>
-                        <li>
-                            <img src="img/color/yellow.jpg" alt="">
-                        </li>
-                        <li>
-                            <img src="img/color/purple.jpg" alt="">
-                        </li>
-                    </ul>
-                    <p class="prod-skuttl">CLOTHING SIZES</p>
-                    <div class="offer-props-select">
-                        <p>XL</p>
-                        <ul>
-                            <li><a href="#">XS</a></li>
-                            <li><a href="#">S</a></li>
-                            <li><a href="#">M</a></li>
-                            <li class="active"><a href="#">XL</a></li>
-                            <li><a href="#">L</a></li>
-                            <li><a href="#">4XL</a></li>
-                            <li><a href="#">XXL</a></li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="prod-info">
                     <p class="prod-price">
@@ -185,31 +69,28 @@
                 </div>
                 <ul class="prod-i-props">
                     <li>
-                        <b>SKU</b> 05464207
+                        <b>Kích thước màn hình</b> @Model.Product.kichThuocManHinh
                     </li>
                     <li>
-                        <b>Material</b> Nylon
+                        <b>Ram</b> @Model.Product.ram
                     </li>
                     <li>
-                        <b>Pattern Type</b> Solid
+                        <b>Rom</b> @Model.Product.bonhotrong
                     </li>
                     <li>
-                        <b>Wash</b> Colored
+                        <b>Hệ điều hành</b> @Model.Product.heDieuHanh
                     </li>
                     <li>
-                        <b>Style</b> Sport
+                        <b>Camera trước</b> @Model.Product.cameraTruoc
                     </li>
                     <li>
-                        <b>Color</b> Blue
+                        <b>Camera sau</b> @Model.Product.cameraSau
                     </li>
                     <li>
-                        <b>Gender</b> Unisex
+                        <b>CPU</b> @Model.Product.CPU
                     </li>
                     <li>
-                        <b>Rain Cover</b> No
-                    </li>
-                    <li>
-                        <b>Exterior</b> Solid Bag
+                        <b>Pin</b> @Model.Product.pin
                     </li>
                     <li><a href="#" class="prod-showprops">All Features</a></li>
                 </ul>
@@ -299,7 +180,7 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                         </div>
-                                        <time datetime="2017-12-21 12:19:46" class="reviews-i-date">@item.CreateTime</time>
+                                        <time datetime="2017-12-21 12:19:46" class="reviews-i-date">@item.create_at</time>
                                     </div>
                                     <div class="reviews-i-cont">
                                         <p>@item.Content</p>
@@ -341,7 +222,7 @@
         </div>
         <!-- Single Product - end -->
         <!-- Related Products - start -->
-        <div class="prod-related">
+        @*<div class="prod-related">
             <h2><span>Related products</span></h2>
             <div class="prod-related-car" id="prod-related-car">
                 <ul class="slides">
@@ -557,7 +438,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>*@
         <!-- Related Products - end -->
 
     </section>

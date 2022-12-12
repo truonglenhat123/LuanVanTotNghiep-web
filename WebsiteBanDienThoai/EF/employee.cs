@@ -16,7 +16,6 @@ namespace WebsiteBanDienThoai.EF
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int employee_id { get; set; }
 
         [StringLength(50)]

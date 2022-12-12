@@ -5,6 +5,7 @@ namespace WebsiteBanDienThoai.EF
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("Product")]
     public partial class Product
@@ -14,11 +15,8 @@ namespace WebsiteBanDienThoai.EF
         {
             Feedbacks = new HashSet<Feedback>();
             Oder_Detail = new HashSet<Oder_Detail>();
-            FeedbackNews = new HashSet<FeedbackNew>();
-            ProductImages = new HashSet<ProductImage>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         [StringLength(50)]
@@ -26,7 +24,7 @@ namespace WebsiteBanDienThoai.EF
 
         public bool? IsDelete { get; set; }
 
-        public double? Old_Price { get; set; }
+        public double Old_Price { get; set; }
 
         public double New_Price { get; set; }
 
@@ -36,8 +34,6 @@ namespace WebsiteBanDienThoai.EF
         public bool? hot { get; set; }
 
         public int genre_id { get; set; }
-
-        public int? SupplierID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? CreateDate { get; set; }
@@ -79,7 +75,7 @@ namespace WebsiteBanDienThoai.EF
         [StringLength(500)]
         public string CPU { get; set; }
 
-        public int SoLuong { get; set; }
+        public int? SoLuong { get; set; }
 
         public int? brand_id { get; set; }
 
@@ -105,11 +101,9 @@ namespace WebsiteBanDienThoai.EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Oder_Detail> Oder_Detail { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FeedbackNew> FeedbackNews { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductImage> ProductImages { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase[] ImageUploadMulti { get; set; }
     }
 }

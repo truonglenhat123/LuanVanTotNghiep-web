@@ -10,7 +10,7 @@ namespace WebsiteBanDienThoai.Controllers
 {
     public class HomeController : Controller
     {
-        Model1 db = new Model1();
+        dbFinal db = new dbFinal();
         public ActionResult Index()
         {
             ViewBag.HotProduct = db.Products.Where(item =>item.hot == true && item.SoLuong !=0 ).Take(8).ToList();
