@@ -118,53 +118,68 @@
                             </div>
                             <!--end::Info-->
                         </div>
-                        <!--end::Details-->
                     </div>
                 </div>
-                <!--end::Navbar-->
-                <!--begin::Basic info-->
                 <div class="card mb-5 mb-xl-10">
-                    <!--begin::Content-->
                     <div id="kt_account_settings_profile_details" class="collapse show">
-                        <!--begin::Form-->
-                       
-                            <!--begin::Card body-->
-                            <div class="card-body border-top p-9">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="mb-2">
+                        <div class="card-body border-top p-9">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="mb-2">
+                            </div>
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <div class="col-lg-4">
+                                    <label for="product_name" class="col-form-label fw-bold fs-6 required">Tên thương hiệu</label>
                                 </div>
-                                <div class="row mb-6">
-                                    <!--begin::Label-->
-                                    <div class="col-lg-4">
-                                        <label for="product_name" class="col-form-label fw-bold fs-6 required">Tên thương hiệu</label>
-                                    </div>
-                                    <!--end::Label-->
-                                    <!--begin::Col-->
-                                    <div class="col-lg-8 fv-row">
-                                        @Html.EditorFor(model => model.brand_name, new { htmlAttributes = new { @class = "form-control form-control-lg form-control-solid", placeholder = "Nhập tên thương hiệu", autocomplete = "off" } })
-                                        @Html.ValidationMessageFor(model => model.brand_name, "", new { @class = "text-danger" })
-                                    </div>
-                                    <!--end::Col-->
+                                <div class="col-lg-8 fv-row">
+                                    @Html.DisplayFor(model => model.brand_name, new { htmlAttributes = new { @class = "form-control form-control-lg form-control-solid", placeholder = "", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.brand_name, "", new { @class = "text-danger" })
                                 </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="row mb-6">
-                                    <!--begin::Label-->
-                                    <div class="col-lg-4">
-                                        <label for="price" class="col-form-label fw-bold fs-6 required">Giá bán</label>
-                                    </div>
-                                    <!--end::Label-->
-                                    <!--begin::Col-->
+                                <!--end::Col-->
+                            </div>
 
-                                    <div class="col-lg-8 fv-row">
-                                        @Html.EditorFor(model => model.create_by, new { htmlAttributes = new { @class = "form-control form-control-lg form-control-solid", placeholder = "Nhập tên người thêm", autocomplete = "off" } })
-                                        @Html.ValidationMessageFor(model => model.create_by, "", new { @class = "text-danger" })
-                                    </div>
-                                    <!--end::Col-->
-                                  
+                            <div class="row mb-6">
+                                <div class="col-lg-4">
+                                    <label for="price" class="col-form-label fw-bold fs-6 required">Thêm lúc</label>
                                 </div>
+
+
+                                <div class="col-lg-8 fv-row">
+                                    @Html.DisplayFor(model => model.create_at, new { htmlAttributes = new { @class = "form-control form-control-lg form-control-solid", placeholder = "", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.create_at, "", new { @class = "text-danger" })
+                                </div>
+                                <!--end::Col-->
 
                             </div>
+                            <div class="row mb-6">
+                                <div class="col-lg-4">
+                                    <label for="price" class="col-form-label fw-bold fs-6 required">Cập nhật bởi</label>
+                                </div>
+
+
+                                <div class="col-lg-8 fv-row">
+                                    @Html.DisplayFor(model => model.update_by, new { htmlAttributes = new { @class = "form-control form-control-lg form-control-solid", placeholder = "", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.update_by, "", new { @class = "text-danger" })
+                                </div>
+                                <!--end::Col-->
+
+                            </div>
+                            <div class="row mb-6">
+                                <div class="col-lg-4">
+                                    <label for="price" class="col-form-label fw-bold fs-6 required">Cập nhật lúc</label>
+                                </div>
+
+
+                                <div class="col-lg-8 fv-row">
+                                    @Html.DisplayFor(model => model.update_at, new { htmlAttributes = new { @class = "form-control form-control-lg form-control-solid", placeholder = "", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.create_by, "", new { @class = "text-danger" })
+                                </div>
+                                <!--end::Col-->
+
+                            </div>
+                           
+
+                        </div>
                             <!--end::Card body-->
                             <!--begin::Actions-->
                             @using (Html.BeginForm())

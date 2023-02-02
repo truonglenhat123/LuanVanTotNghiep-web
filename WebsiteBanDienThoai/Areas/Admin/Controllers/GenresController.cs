@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebsiteBanDienThoai.common.Helper;
 using WebsiteBanDienThoai.EF;
 
 namespace WebsiteBanDienThoai.Areas.Admin.Controllers
@@ -41,21 +42,21 @@ namespace WebsiteBanDienThoai.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Admin/Genres/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "genre_id,genre_name,create_at,create_by,update_by,update_at")] Genre genre)
+        public ActionResult Create(Genre genres)
         {
-            if (ModelState.IsValid)
-            {
-                db.Genres.Add(genre);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(genre);
+            genres.genre_name = genres.genre_name;
+            genres.create_by = User.Identity.GetEmail();
+            genres.update_by = User.Identity.GetEmail();
+            genres.create_at = DateTime.Now;
+            genres.update_at = DateTime.Now;
+            db.Genres.Add(genres);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+
         }
 
         // GET: Admin/Genres/Edit/5

@@ -149,13 +149,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DiscountsController.cs" />
     <Compile Include="Areas\Admin\Controllers\GenresController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsAdminController.cs" />
     <Compile Include="common\Authentication.cs" />
     <Compile Include="common\Const.cs" />
     <Compile Include="common\CustomRoleProvider.cs" />
+    <Compile Include="common\EmailConfig.cs" />
     <Compile Include="common\Helper\AuthHelper.cs" />
     <Compile Include="common\Helper\XHtmlHelper.cs" />
     <Compile Include="common\LoginData.cs" />
@@ -197,11 +201,13 @@
     <Compile Include="Services\Product\Interface\IProductService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\css_das.css" />
     <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.svg" />
     <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.svg" />
     <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.svg" />
     <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.css" />
     <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\grid.css" />
     <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.svg" />
     <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.svg" />
     <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.svg" />
@@ -408,6 +414,21 @@
     <Content Include="Areas\Admin\Views\Genres\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Genres\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Genres\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Discounts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Discounts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Discounts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Discounts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Index.cshtml" />
+    <Content Include="EmailTemplate\ResetPassword.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -443,11 +464,12 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Order\Checkout.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="DAO\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

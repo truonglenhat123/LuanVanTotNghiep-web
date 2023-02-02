@@ -56,8 +56,8 @@ namespace WebsiteBanDienThoai.Controllers
         }
         private IPagedList GetProduct(Expression<Func<Product, bool>> expr, int? page, string sortOrder)
         {
-            int pageSize = 9; //1 trang hiện thỉ tối đa 9 sản phẩm
-            int pageNumber = (page ?? 1); //đánh số trang
+            int pageSize = 9; 
+            int pageNumber = (page ?? 1);
 
             ViewBag.OrderDetail = db.Oder_Detail.ToList();
             ViewBag.CurrentSort = sortOrder;

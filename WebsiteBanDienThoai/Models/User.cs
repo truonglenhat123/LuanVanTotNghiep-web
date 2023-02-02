@@ -62,4 +62,26 @@ namespace WebsiteBanDienThoai.Models
         
 
     }
+    public class ForgotPasswordViewModels
+    {
+        [DisplayName("Email")]
+        [Required(ErrorMessage = "Nhập Email")]
+        public string Email { get; set; }
+    }
+    public class ResetPasswordViewModels
+    {
+        [DisplayName("Mật khẩu mới")]
+        [Required(ErrorMessage = "Nhập Mật khẩu mới")]
+        [MaxLength(30, ErrorMessage = "Mật khẩu tối đa 30 ký tự")]
+        [RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]))(?=.*[#$^+=!*()@%&]).{8,}$", ErrorMessage = "Mật khẩu tổi thiếu 8 ký tự bao gồm: chữ thường, chữ hoa, chữ số và 1 ký tự đặc biệt")]
+        public string NewPassword { get; set; }
+
+        [DisplayName("Mật khẩu xác nhận")]
+        [Required(ErrorMessage = "Nhập Mật khẩu xác nhận")]
+        [Compare("NewPassword", ErrorMessage = "Mật khẩu xác nhận không trùng với mật khẩu mới")]
+        public string PasswordConfirm { get; set; }
+        [Required] public string ResetCode { get; set; }
+
+    }
+
 }

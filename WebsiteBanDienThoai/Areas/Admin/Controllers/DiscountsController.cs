@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing.Drawing2D;
+using System.EnterpriseServices;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,107 +14,111 @@ using WebsiteBanDienThoai.EF;
 
 namespace WebsiteBanDienThoai.Areas.Admin.Controllers
 {
-    public class BrandsController : Controller
+    public class DiscountsController : Controller
     {
         private dbFinal db = new dbFinal();
 
-        // GET: Admin/Brands
+        // GET: Admin/Discounts
         public ActionResult Index()
         {
-            return View(db.Brands.ToList());
+            return View(db.Discounts.ToList());
         }
 
-        // GET: Admin/Brands/Details/5
+        // GET: Admin/Discounts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brand brand = db.Brands.Find(id);
-            if (brand == null)
+            Discount discount = db.Discounts.Find(id);
+            if (discount == null)
             {
                 return HttpNotFound();
             }
-            return View(brand);
+            return View(discount);
         }
 
-        // GET: Admin/Brands/Create
+        // GET: Admin/Discounts/Create
         public ActionResult Create()
+
         {
             return View();
         }
-
         [HttpPost]
-        public ActionResult Create(Brand brand)
+        public ActionResult Create(Discount discount)
+
         {
-            
-                brand.brand_name = brand.brand_name;
-                brand.create_by = User.Identity.GetEmail();
-                brand.update_by = User.Identity.GetEmail();
-                brand.create_at = DateTime.Now;
-                brand.update_at = DateTime.Now;
-                db.Brands.Add(brand);
-                db.SaveChanges();
-               
-                return RedirectToAction("Index");
-            
-         
+            discount.discount_name = discount.discount_name;
+            discount.discount_star = discount.discount_star;
+            discount.discount_end = discount.discount_end;
+            discount.discount_price=discount.discount_price;
+            discount.discount_code = discount.discount_code;
+            discount.create_at=DateTime.Now;
+            discount.create_by=User.Identity.GetEmail();
+            discount.update_at=DateTime.Now;
+            discount.update_by=User.Identity.GetEmail();
+            discount.quantity = discount.quantity;
+            db.Discounts.Add(discount);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Admin/Brands/Edit/5
+
+        // GET: Admin/Discounts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brand brand = db.Brands.Find(id);
-            if (brand == null)
+            Discount discount = db.Discounts.Find(id);
+            if (discount == null)
             {
                 return HttpNotFound();
             }
-            return View(brand);
+            return View(discount);
         }
 
-        // POST: Admin/Brands/Edit/5
+        // POST: Admin/Discounts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "brand_id,brand_name,create_by,create_at,update_by,update_at")] Brand brand)
+        public ActionResult Edit([Bind(Include = "disscount_id,discount_name,discount_star,discount_end,discount_price,discount_code,create_at,create_by,update_by,update_at,quantity")] Discount discount)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(brand).State = EntityState.Modified;
+                db.Entry(discount).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(brand);
+            return View(discount);
         }
 
-        // GET: Admin/Brands/Delete/5
+        // GET: Admin/Discounts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brand brand = db.Brands.Find(id);
-            if (brand == null)
+            Discount discount = db.Discounts.Find(id);
+            if (discount == null)
             {
                 return HttpNotFound();
             }
-            return View(brand);
+            return View(discount);
         }
 
-        // POST: Admin/Brands/Delete/5
+        // POST: Admin/Discounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Brand brand = db.Brands.Find(id);
-            db.Brands.Remove(brand);
+            Discount discount = db.Discounts.Find(id);
+            db.Discounts.Remove(discount);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

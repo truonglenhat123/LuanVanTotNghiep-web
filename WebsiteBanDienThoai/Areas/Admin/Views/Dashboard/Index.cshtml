@@ -20,195 +20,352 @@
     double total2 = 0;
 }
 
-<div class="main">
-    <div class="main-header">
-        <div class="mobile-toggle" id="mobile-toggle">
-            <i class='bx bx-menu-alt-right'></i>
+<div class="toolbar" id="kt_toolbar">
+
+    <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+
+        <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+
+            <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Thống kê</h1>
+
+            <span class="h-20px border-gray-300 border-start mx-4"></span>
+
+            <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+
+                <li class="breadcrumb-item text-muted">
+                    <a class="text-muted text-hover-primary">Bảng điều khiển</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-300 w-5px h-2px"></span>
+                </li>
+
+                <li class="breadcrumb-item text-dark">Thống kê</li>
+
+            </ul>
+
         </div>
-        <div class="main-title">
-            Bảng điều khiển
-        </div>
+
     </div>
-    <div class="main-content">
-        <div class="row">
-            <div class="col-3 col-md-6 col-sm-12">
-                <div class="box box-hover">
-                    <!-- COUNTER -->
-                    <div class="counter">
-                        <div class="counter-title">
-                            Tổng đơn đặt mua
-                        </div>
-                        <div class="counter-info">
-                            <div class="counter-count">
-                                @Order.Count()
+
+</div>
+
+<div class="post d-flex flex-column-fluid" id="kt_post">
+
+    <div id="kt_content_container" class="container-xxl">
+
+        <div class="row g-5 g-xl-10 mb-xl-10">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
+
+                <div class="card card-flush h-md-50 mb-5 mb-xl-10">
+
+                    <div class="card-header pt-5">
+
+                        <div class="card-title d-flex flex-column">
+
+                            <div class="d-flex align-items-center">
+
+                                <span class="fs-4 fw-bold text-gray-400 me-1 align-self-start">₫</span>
+
+                                <span class="fs-2hx fw-bolder text-dark me-2 lh-1">@Order.Where(m => m.oder_date?.Month == DateTime.Now.Month && m.oder_date?.Year == DateTime.Now.Year).Sum(m => m.total).ToString("#,0", culture.NumberFormat)</span>
+
+                                @if (totalPriceOrderLastMonth < totalPriceOrderThisMonth)
+                                {
+                                    <span class="badge badge-success fs-6 lh-1 py-1 px-2 d-flex flex-center" style="height: 22px">
+
+                                        <span class="svg-icon svg-icon-7 svg-icon-white ms-n1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.5" d="M13 9.59998V21C13 21.6 12.6 22 12 22C11.4 22 11 21.6 11 21V9.59998H13Z" fill="black" />
+                                                <path d="M5.7071 7.89291C5.07714 8.52288 5.52331 9.60002 6.41421 9.60002H17.5858C18.4767 9.60002 18.9229 8.52288 18.2929 7.89291L12.7 2.3C12.3 1.9 11.7 1.9 11.3 2.3L5.7071 7.89291Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                        @((percentPriceOrder-1).ToString("0%"))
+                                    </span>
+
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger fs-6 lh-1 py-1 px-2 d-flex flex-center" style="height: 22px">
+
+                                        <span class="svg-icon svg-icon-7 svg-icon-white ms-n1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.5" d="M13 14.4V3.00003C13 2.40003 12.6 2.00003 12 2.00003C11.4 2.00003 11 2.40003 11 3.00003V14.4H13Z" fill="black" />
+                                                <path d="M5.7071 16.1071C5.07714 15.4771 5.52331 14.4 6.41421 14.4H17.5858C18.4767 14.4 18.9229 15.4771 18.2929 16.1071L12.7 21.7C12.3 22.1 11.7 22.1 11.3 21.7L5.7071 16.1071Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                        @((1-percentPriceOrder).ToString("0%"))
+                                    </span>
+
+                                }
                             </div>
-                            
-                            <i class='bx bx-shopping-bag'></i>
+
+                            <span class="text-gray-400 pt-1 fw-bold fs-6">Ước tính doanh thu</span>
+
                         </div>
+
                     </div>
 
-                </div>
-            </div>
-            <div class="col-3 col-md-6 col-sm-12">
-                <div class="box box-hover">
-                    <!-- COUNTER -->
-                    <div class="counter">
-                        <div class="counter-title">
-                            tỉ lệ phản hồi
-                        </div>
-                        <div class="counter-info">
-                            <div class="counter-count">
-                                30.5%
-                            </div>
-                            <i class='bx bx-chat'></i>
-                        </div>
-                    </div>
+                    <div class="card-body pt-2 pb-4 d-flex align-items-center">
 
-                </div>
-            </div>
-            <div class="col-3 col-md-6 col-sm-12">
-                <div class="box box-hover">
-
-                    <div class="counter">
-                        <div class="counter-title">
-                            Tổng lợi nhuận
-                        </div>
-                        <div class="counter-info">
-                            <div class="counter-count">
-                                @Order.Sum(m => m.total).ToString("#,0", culture.NumberFormat)
-                            </div>
-                            <i class='bx bx-line-chart'></i>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-3 col-md-6 col-sm-12">
-                <div class="box box-hover">
-
-                    <div class="counter">
-                        <div class="counter-title">
-                            lưu lượng truy cập ngày
-                        </div>
-                        <div class="counter-info">
-                            <div class="counter-count">
-                                690
-                            </div>
-                            <i class='bx bx-user'></i>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-10 col-md-9 col-sm-12">
-
-                <div class="box f-height">
-                    <div class="box-header">
-                        Top sản phẩm
-                    </div>
-                    <div class="box-body">
-                        <ul class="product-list">
-                            @foreach (var item in ListProduct)
+                        <div class="d-flex flex-column content-justify-center">
+                            @foreach (var order in Order)
                             {
-                                <li class="product-list-item">
-                                    <div class="item-info">
-                                        <a href="iphone12_view.html">
-                                            <img src="~/Assets/img/@item.image" alt="product image">
-                                            <div class="item-name">
-                                                <div class="product-name">@item.ProductName</div>
-                                                <div class="text-second">VN/A</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item-sale-info">
-                                        <div class="text-second">Giá</div>
-                                        <div class="product-sales">@Html.FormatValue(item.New_Price,"{0:c}")</div>
-                                    </div>
-                                </li>
+                                foreach (var orderDetail in OrderDetail)
+                                {
+                                    if (orderDetail.order_id == order.order_id && orderDetail.Product.genre_id == 1 && order.oder_date?.Month == DateTime.Now.Month && order.oder_date?.Year == DateTime.Now.Year)
+                                    {
+                                        total += order.total;
+                                    }
+
+                                    if (orderDetail.order_id == order.order_id && orderDetail.Product.genre_id == 2 && order.oder_date?.Month == DateTime.Now.Month && order.oder_date?.Year == DateTime.Now.Year)
+                                    {
+                                        total2 += order.total;
+                                    }
+
+                                }
                             }
 
+                            <div class="d-flex fs-6 fw-bold align-items-center">
 
-                        </ul>
+                                <div class="bullet w-8px h-6px rounded-2 bg-danger me-3"></div>
+
+                                <div class="text-gray-500 pe-1">Điện thoại</div>
+
+                                <div class="ms-auto fw-boldest text-gray-700 min-w-70px text-end">@total.ToString("#,0₫", culture.NumberFormat)</div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card card-flush h-md-50 mb-xl-10">
+
+                    <div class="card-header pt-5">
+
+                        <div class="card-title d-flex flex-column">
+
+                            <div class="d-flex align-items-center">
+
+                                <span class="fs-2hx fw-bolder text-dark me-2 lh-1">
+                                    @Order.Where(m => m.oder_date?.Month == DateTime.Now.Month && m.oder_date?.Year == DateTime.Now.Year).Count()
+                                </span>
+
+                                @if (totalOrderThisMonth < totalOrderLastMonth)
+                                {
+
+
+                                    <span class="badge badge-danger fs-6 lh-1 py-1 px-2 d-flex flex-center" style="height: 22px">
+
+                                        <span class="svg-icon svg-icon-7 svg-icon-white ms-n1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.5" d="M13 14.4V3.00003C13 2.40003 12.6 2.00003 12 2.00003C11.4 2.00003 11 2.40003 11 3.00003V14.4H13Z" fill="black" />
+                                                <path d="M5.7071 16.1071C5.07714 15.4771 5.52331 14.4 6.41421 14.4H17.5858C18.4767 14.4 18.9229 15.4771 18.2929 16.1071L12.7 21.7C12.3 22.1 11.7 22.1 11.3 21.7L5.7071 16.1071Z" fill="black" />
+                                            </svg>
+                                            <span>@((1-percentOrder).ToString("0.0%"))</span>
+                                        </span>
+                                    </span>
+
+                                }
+                                else
+                                {
+
+                                    <span class="badge badge-success fs-6 lh-1 py-1 px-2 d-flex flex-center" style="height: 22px">
+
+                                        <span class="svg-icon svg-icon-7 svg-icon-white ms-n1">
+
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.5" d="M13 9.59998V21C13 21.6 12.6 22 12 22C11.4 22 11 21.6 11 21V9.59998H13Z" fill="black" />
+                                                <path d="M5.7071 7.89291C5.07714 8.52288 5.52331 9.60002 6.41421 9.60002H17.5858C18.4767 9.60002 18.9229 8.52288 18.2929 7.89291L12.7 2.3C12.3 1.9 11.7 1.9 11.3 2.3L5.7071 7.89291Z" fill="black" />
+                                            </svg>
+                                            <span>@((percentOrder-1).ToString("0.0%"))</span>
+                                        </span>
+                                    </span>
+
+                                }
+                            </div>
+
+                            <span class="text-gray-400 pt-1 fw-bold fs-6">Đơn hàng trong tháng</span>
+
+                        </div>
+
                     </div>
                 </div>
 
             </div>
- 
 
-            <div class="col-12">
+            <div class="col-xl-8 mb-md-8 mb-xl-12">
 
-                <div class="box">
-                    <div class="box-header">
-                        Đơn hàng gần đây
+                <div class="card h-md-100">
+
+                    <div class="card-header align-items-center border-0">
+
+                        <h3 class="fw-bolder text-gray-900 m-0">Sản phẩm bán chạy</h3>
+
                     </div>
-                    <div class="box-body overflow-scroll">
-                        <table>
+
+                    <div class="card-body pt-2">
+
+                        <ul class="nav nav-pills nav-pills-custom mb-3">
+
+                            <li class="nav-item mb-3 me-3 me-lg-6">
+
+                                <a class="nav-link d-flex justify-content-between flex-column flex-center overflow-hidden active w-80px h-85px py-4" data-bs-toggle="pill" href="#kt_stats_widget_2_tab_2">
+
+                                    <div class="nav-icon">
+                                        <img alt="" src="/Images/Admin/assets/media/svg/products-categories/gaming.svg" class="" />
+                                    </div>
+
+                                    <span class="nav-text text-gray-700 fw-bolder fs-6 lh-1">Điện thoại</span>
+
+                                    <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div class="tab-pane fade show active" id="kt_stats_widget_2_tab_2">
+
+                                <div class="table-responsive">
+
+                                    <table class="table table-row-dashed align-middle gs-0 gy-4 my-0">
+
+                                        <thead>
+                                            <tr class="fs-7 fw-bolder text-gray-500 border-bottom-0">
+                                                <th class="ps-0 w-50px">Sản Phẩm</th>
+                                                <th class="min-w-50px"></th>
+                                                <th class="ps-0 w-30px">Số lượng</th>
+                                                <th class="pe-0 text-end min-w-10px">Đơn giá</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach (var phone in ListProduct)
+                                            {
+                                                if (phone.genre_id == 1)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <img src="~/Assets/img/@phone.image" class="w-30px ms-n1" alt="" />
+                                                        </td>
+                                                        <td class="ps-0">
+                                                            <a target="_blank" href="" class="text-gray-800 fw-bolder text-hover-primary mb-1 fs-6 text-start pe-0" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">@phone.ProductName</a>
+                                                            <span class="text-gray-400 fw-bold fs-7 d-block text-start ps-0">Item: #@phone.ID</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-gray-800 fw-bolder d-block fs-6 ps-0 text-end">x<span>@phone.SoLuong</span></span>
+                                                        </td>
+                                                        <td class="text-end pe-0">
+                                                            <span class="text-gray-800 fw-bolder d-block fs-6">@phone.New_Price.ToString("#,0₫", culture.NumberFormat)</span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row gy-5 g-xl-12" style="
+    width: 1607px">
+
+            <div class="col-xl-8 mb-12 mb-xl-10">
+
+                <div class="card card-flush h-xl-100">
+
+                    <div class="card-header pt-7">
+
+                        <h3 class="card-title align-items-start flex-column">
+                            <span class="card-label fw-bolder text-dark">Đơn đặt hàng</span>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <table class="table align-middle table-row-dashed fs-6 gy-3">
+
                             <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Khách hàng</th>
-                                    <th>Ngày</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Tình trạng thanh toán</th>
-                                    <th>Tổng đơn</th>
+
+                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                    <th class="min-w-100px">Order ID</th>
+                                    <th class="text-end min-w-100px">Ngày tạo</th>
+                                    <th class="text-end min-w-125px">Khách hàng</th>
+                                    <th class="text-end min-w-125px">Số điện thoại</th>
+                                    <th class="text-end min-w-100px">Tổng cộng</th>
+                                    <th class="text-end min-w-50px">Status</th>
+                                    <th class="text-end"></th>
                                 </tr>
+
                             </thead>
-                            <tbody>
+
+                            <tbody class="fw-bolder text-gray-600">
                                 @foreach (var item in ListOrder)
                                 {
                                     <tr>
-                                        <td>@item.order_id</td>
                                         <td>
-                                            <div class="order-owner">
-                                                <span>@item.Account.Name</span>
-                                            </div>
+                                            <a class="text-gray-600 fw-bold" target="_blank" href="@Url.Action("Details","Orders",new { id = item.order_id})">#@item.order_id</a>
                                         </td>
-                                        <td>@item.create_at</td>
-                                        <td>@item.Account.Phone</td>
-                                        <td>
+                                        <td class="text-end">@item.oder_date</td>
+                                        <td class="text-end">
+                                            <a class="text-gray-600 text-hover-primary" target="_blank" href="@Url.Action("Details","Auth",new { id = item.order_id})">@item.Account.Name</a>
+                                        </td>
+                                        <td class="text-end">@item.Account.Phone</td>
+                                        <td class="text-end">@item.total.ToString("#,0₫", culture.NumberFormat)</td>
+                                        <td class="text-end">
                                             @if (item.status == "1")
                                             {
-
-                                                <span class="order-status order-ready">
-                                                    Chờ xử lí
-                                                </span>
-
+                                                <span class="badge py-3 px-4 fs-7 badge-light-warning">Chờ xử lý</span>
                                             }
                                             else if (item.status == "2")
                                             {
-                                                <span class="order-status order-ready">
-                                                    Đang xử lí
-                                                </span>
+                                                <span class="badge py-3 px-4 fs-7 badge-light-info">Đang xử lý</span>
                                             }
                                             else if (item.status == "3")
                                             {
-                                                <span class="order-status order-ready">
-                                                    Hoàn thành
-                                                </span>
+                                                <span class="badge py-3 px-4 fs-7 badge-light-success">Hoàn thành</span>
                                             }
                                             else
                                             {
-                                                <span class="order-status order-ready">
-                                                    Đã hủy
-                                                </span>
+                                                <span class="badge py-3 px-4 fs-7 badge-light-danger">Đã hủy</span>
                                             }
-
                                         </td>
-                                        <td>@Html.FormatValue(item.total, "{0:c}") ₫</td>
                                     </tr>
                                 }
-
-
                             </tbody>
+
                         </table>
+
                     </div>
+
                 </div>
 
             </div>
+
         </div>
+
     </div>
+
 </div>
+<!--end::Post-->
+@section scripts{
+    <script src="~/Areas/Admin/AssetAdmin/AdminJS/vis-timeline.bundle.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/AdminJS/widgets.bundle.js"></script>
+}
 

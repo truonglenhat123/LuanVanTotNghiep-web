@@ -32,10 +32,8 @@
             </li>
         </ul>
         <h1 class="main-ttl"><span>@Model.Product.ProductName</span></h1>
-        <!-- Single Product - start -->
         <div class="prod-wrap">
-
-            <!-- Product Images -->
+           
             <div class="prod-slider-wrap">
                 <div class="prod-slider">
                     <ul class="prod-slider-car">
@@ -172,7 +170,7 @@
                             {
                                 <li class="reviews-i existimg">
                                     <div class="reviews-i-img">
-                                        <img src="http://placehold.it/120x120" alt="Averill Sidony">
+                                        <img src="http://placehold.it/120x120" alt="">
                                         <div class="reviews-i-rating">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -208,8 +206,9 @@
                             @using (Html.BeginForm())
                             {
                                 @Html.AntiForgeryToken()
-                                @Html.HiddenFor(model => model.AddFeedback.ProductId, new { id="product-id", Value = Model.Product.ID })
+                                @Html.HiddenFor(model => model.AddFeedback.ProductId, new { id = "product-id", Value = Model.Product.ID })
                                 @Html.TextBoxFor(model => model.AddFeedback.Name, new { id = "name", type = "text", placeHolder = "name" })
+                                @Html.TextBoxFor(model => model.AddFeedback.PhoneNumber, new { id = "phone", type = "text", placeHolder = "phone" })
                                 @Html.TextBoxFor(model => model.AddFeedback.Email, new { id = "email", type = "text", placeHolder = "email" })
                                 @Html.TextBoxFor(model => model.AddFeedback.Content, new { id = "content", type = "text", placeHolder = "content" })
                                 <input id="btnSubmitCmt" type="button" value="Submit" class="btn btn-success" />
@@ -220,226 +219,7 @@
             </div>
 
         </div>
-        <!-- Single Product - end -->
-        <!-- Related Products - start -->
-        @*<div class="prod-related">
-            <h2><span>Related products</span></h2>
-            <div class="prod-related-car" id="prod-related-car">
-                <ul class="slides">
-                    <li class="prod-rel-wrap">
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/300x311" alt="Adipisci aperiam commodi">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Adipisci aperiam commodi</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$59</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/300x366" alt="Nulla numquam obcaecati">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Nulla numquam obcaecati</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$48</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/370x300" alt="Dignissimos eaque earum">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Dignissimos eaque earum</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$37</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/300x345" alt="Porro quae quasi">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Porro quae quasi</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$85</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li class="prod-rel-wrap">
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/378x300" alt="Sunt temporibus velit">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Sunt temporibus velit</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$115</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/300x394" alt="Harum illum incidunt">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Harum illum incidunt</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$130</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/300x303" alt="Reprehenderit rerum">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Reprehenderit rerum</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$210</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/300x588" alt="Quae quasi adipisci alias">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Quae quasi adipisci alias</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$85</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li class="prod-rel-wrap">
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/300x416" alt="Maxime molestias necessitatibus nobis">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Maxime molestias necessitatibus nobis</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$95</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="prod-rel">
-                            <a href="product.html" class="prod-rel-img">
-                                <img src="http://placehold.it/300x480" alt="Facilis illum">
-                            </a>
-                            <div class="prod-rel-cont">
-                                <h3><a href="product.html">Facilis illum</a></h3>
-                                <p class="prod-rel-price">
-                                    <b>$150</b>
-                                </p>
-                                <div class="prod-rel-actions">
-                                    <a title="Wishlist" href="#" class="prod-rel-favorites"><i class="fa fa-heart"></i></a>
-                                    <a title="Compare" href="#" class="prod-rel-compare"><i class="fa fa-bar-chart"></i></a>
-                                    <p class="prod-i-addwrap">
-                                        <a title="Add to cart" href="#" class="prod-i-add"><i class="fa fa-shopping-cart"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </li>
-                </ul>
-            </div>
-        </div>*@
-        <!-- Related Products - end -->
+        
 
     </section>
 </main>
@@ -447,13 +227,13 @@
     <script type="text/javascript">
 
     $(function () {
-        //LoadData();
         $("#btnSubmitCmt").click(function () {
             var std = {};
             std.productId = $("#product-id").val();
             std.name = $("#name").val();
             std.email = $("#email").val();
             std.content = $("#content").val();
+            std.phone = $("#phone").val();
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("AddReview", "Product")',
@@ -465,6 +245,8 @@
                     $("#name").val('');
                     $("#email").val('');
                     $("#content").val('');
+                    $("#phone").val('');
+
                 },
                 error: function () {
                     alert("Error while inserting data");
@@ -478,7 +260,7 @@
             var stringNewReview = '';
             stringNewReview += '<li class="reviews-i existimg">'
             stringNewReview += '<div class="reviews-i-img">'
-            stringNewReview += '<img src="http://placehold.it/120x120" alt="Averill Sidony">'
+            stringNewReview += '<img src="http://placehold.it/120x120">'
             stringNewReview += '<div class="reviews-i-rating">'
             stringNewReview += '<i class="fa fa-star"></i>'
             stringNewReview += '<i class="fa fa-star"></i>'
@@ -500,33 +282,5 @@
 
             $('#list-review').append(stringNewReview);
         }
-
-    @*function LoadData() {
-        $("#tblStudent tbody tr").remove();
-        $.ajax({
-            type: 'POST',
-            url: '@Url.Action("getStudent")',
-            dataType: 'json',
-            data: { id: '' },
-            success: function (data) {
-                var items = '';
-                $.each(data, function (i, item) {
-                    var rows = "<tr>"
-                    + "<td class='prtoducttd'>" + item.studentID + "</td>"
-                    + "<td class='prtoducttd'>" + item.studentName + "</td>"
-                    + "<td class='prtoducttd'>" + item.studentAddress + "</td>"
-                    + "</tr>";
-                    $('#tblStudent tbody').append(rows);
-                });
-            },
-            error: function (ex) {
-                var r = jQuery.parseJSON(response.responseText);
-                alert("Message: " + r.Message);
-                alert("StackTrace: " + r.StackTrace);
-                alert("ExceptionType: " + r.ExceptionType);
-            }
-        });
-        return false;
-    }*@
     </script>
 }

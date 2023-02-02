@@ -16,10 +16,10 @@ namespace WebsiteBanDienThoai.Services.Product.Implement
             FeedbackNew fb = new FeedbackNew();
             fb.product_id = addFeedback.ProductId;
             fb.Name = addFeedback.Name;
-            fb.PhoneNumber = addFeedback.PhoneNumber;
+            fb.PhoneNumber = "0964437046";
             fb.Email = addFeedback.Email;
             fb.Content = addFeedback.Content;
-            fb.RateStar = addFeedback.RateStar;
+            fb.RateStar = 5;
             fb.create_at = DateTime.Now;
 
             db.Feedbacks.Add(fb);
