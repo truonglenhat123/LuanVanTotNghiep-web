@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4A13BEA4-34BA-462D-AFC6-9B9A6E6E7F18}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebsiteBanDienThoai</RootNamespace>
+    <AssemblyName>WebsiteBanDienThoai</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44392</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DiscountsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GenresController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsAdController.cs" />
+    <Compile Include="common\Authentication.cs" />
+    <Compile Include="common\Const.cs" />
+    <Compile Include="common\CustomRoleProvider.cs" />
+    <Compile Include="common\EmailConfig.cs" />
+    <Compile Include="common\Helper\AuthHelper.cs" />
+    <Compile Include="common\Helper\XHtmlHelper.cs" />
+    <Compile Include="common\LoginData.cs" />
+    <Compile Include="common\Message\Message.cs" />
+    <Compile Include="common\Message\MessageModel.cs" />
+    <Compile Include="common\Pagination.cs" />
+    <Compile Include="common\ProductType.cs" />
+    <Compile Include="common\UserDataLogin.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="EF\Account.cs" />
+    <Compile Include="EF\Brand.cs" />
+    <Compile Include="EF\Contact.cs" />
+    <Compile Include="EF\Customer.cs" />
+    <Compile Include="EF\dbFinal.cs" />
+    <Compile Include="EF\Discount.cs" />
+    <Compile Include="EF\employee.cs" />
+    <Compile Include="EF\Feedback.cs" />
+    <Compile Include="EF\Genre.cs" />
+    <Compile Include="EF\Oder_Detail.cs" />
+    <Compile Include="EF\Order.cs" />
+    <Compile Include="EF\Payment.cs" />
+    <Compile Include="EF\Product.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AddFeedback.cs" />
+    <Compile Include="Models\ChiTietSanPham.cs" />
+    <Compile Include="Models\DashboardRes.cs" />
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\SendMail.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Product\Implement\ProductService.cs" />
+    <Compile Include="Services\Product\Interface\IProductService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\css_das.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\grid.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.svg" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\PagedList.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\plugins.bundle.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\style.bundle.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\vis-timeline.bundle.css" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\auth.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\brands.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\discounts.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\genres.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\orders.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\plugins.bundle.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\products.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\repry-feedback.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\scripts.bundle.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\vis-timeline.bundle.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\widgets.bundle.js" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminJS\widgets.js" />
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\flexslider.css" />
+    <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\ion.rangeSlider.css" />
+    <Content Include="Assets\css\ion.rangeSlider.skinFlat.css" />
+    <Content Include="Assets\css\jQuery.Brazzers-Carousel.css" />
+    <Content Include="Assets\css\jquery.bxslider.css" />
+    <Content Include="Assets\css\jquery.fancybox.css" />
+    <Content Include="Assets\css\media.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\css\swiper.css" />
+    <Content Include="Assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\img\apple-iphone-12-mini.png" />
+    <Content Include="Assets\img\bac-ssglxA51.jpg" />
+    <Content Include="Assets\img\banner\slider1.png" />
+    <Content Include="Assets\img\banner\slider2.png" />
+    <Content Include="Assets\img\banner\slider3.png" />
+    <Content Include="Assets\img\banner\slider4.png" />
+    <Content Include="Assets\img\banner\slider5.jpg" />
+    <Content Include="Assets\img\banner\slider6.png" />
+    <Content Include="Assets\img\banner\slider7.jpg" />
+    <Content Include="Assets\img\banner\slider8.png" />
+    <Content Include="Assets\img\green-iphone13.png" />
+    <Content Include="Assets\img\ip11den.jpg" />
+    <Content Include="Assets\img\ip11gold.jpg" />
+    <Content Include="Assets\img\ip11green.png" />
+    <Content Include="Assets\img\ip11white.jpg" />
+    <Content Include="Assets\img\ip12blue.png" />
+    <Content Include="Assets\img\ip12den.jpg" />
+    <Content Include="Assets\img\ip12green.png" />
+    <Content Include="Assets\img\ip12p128blue.jpg" />
+    <Content Include="Assets\img\ip12p128gold.png" />
+    <Content Include="Assets\img\ip12p128grey.png" />
+    <Content Include="Assets\img\ip12p128white.png" />
+    <Content Include="Assets\img\ip12pm128blue.png" />
+    <Content Include="Assets\img\ip12pm128gold.png" />
+    <Content Include="Assets\img\ip12pm128grey.png" />
+    <Content Include="Assets\img\ip12pm128silver.jpg" />
+    <Content Include="Assets\img\ip12pmblue.jpg" />
+    <Content Include="Assets\img\ip12pmgold.jpg" />
+    <Content Include="Assets\img\ip12pmgrey.jpg" />
+    <Content Include="Assets\img\ip12trang.png" />
+    <Content Include="Assets\img\ip13512gbgreen.png" />
+    <Content Include="Assets\img\ip13p128gbgreen.jpg" />
+    <Content Include="Assets\img\ip13pblack.png" />
+    <Content Include="Assets\img\ip13pblue.png" />
+    <Content Include="Assets\img\ip13pgold.png" />
+    <Content Include="Assets\img\ip13pm128green.jpg" />
+    <Content Include="Assets\img\ip13psil.png" />
+    <Content Include="Assets\img\ip14pmbac.png" />
+    <Content Include="Assets\img\ip14pmblack.png" />
+    <Content Include="Assets\img\ip14pmgold.jpg" />
+    <Content Include="Assets\img\ip14pmgreen.png" />
+    <Content Include="Assets\img\ip14pmvang.png" />
+    <Content Include="Assets\img\ip14pmxanh.png" />
+    <Content Include="Assets\img\ip14promaxden.png" />
+    <Content Include="Assets\img\iphone-12-pro-max.png" />
+    <Content Include="Assets\img\iphone13-xanhla.jpg" />
+    <Content Include="Assets\img\iphone14.png" />
+    <Content Include="Assets\img\logo\logo-dien-thoai%2835%29.jpg" />
+    <Content Include="Assets\img\logo\logo1.jpg" />
+    <Content Include="Assets\img\logo\logoApple.png" />
+    <Content Include="Assets\img\logo\logosamsung.png" />
+    <Content Include="Assets\img\logo\OPPO_LOGO_2019.png" />
+    <Content Include="Assets\img\logo\xiaomi.jpg" />
+    <Content Include="Assets\img\mi-11-black.png" />
+    <Content Include="Assets\img\or85black.png" />
+    <Content Include="Assets\img\or85gold.png" />
+    <Content Include="Assets\img\or8black.png" />
+    <Content Include="Assets\img\or8gold.png" />
+    <Content Include="Assets\img\or8zgold.jpg" />
+    <Content Include="Assets\img\Samsung-Galaxy-S21-Ultra.png" />
+    <Content Include="Assets\img\samsung-galaxy-z-fold-2.jpg" />
+    <Content Include="Assets\img\sgn20.jpg" />
+    <Content Include="Assets\img\sgn20u.jpg" />
+    <Content Include="Assets\img\sgn20u5.jpg" />
+    <Content Include="Assets\img\sgs22ultrablue.jpg" />
+    <Content Include="Assets\img\sgs22ultratrang.jpg" />
+    <Content Include="Assets\img\sgzflip4fmc.jpg" />
+    <Content Include="Assets\img\ssgzf4.jpg" />
+    <Content Include="Assets\img\ssgzflip4grey.jpg" />
+    <Content Include="Assets\img\t_m-iphone-14-pro.png" />
+    <Content Include="Assets\img\vang-iphone-14-pro.png" />
+    <Content Include="Assets\img\x12t.jpg" />
+    <Content Include="Assets\img\x12tblue.jpg" />
+    <Content Include="Assets\img\x12tpro.jpg" />
+    <Content Include="Assets\img\x12tsil.jpg" />
+    <Content Include="Assets\img\xanh-iphone13pro.jpg" />
+    <Content Include="Assets\img\xanh-iphone14-plus.png" />
+    <Content Include="Assets\img\xanh-samsunggalaxyA33.png" />
+    <Content Include="Assets\img\xanh-ssglxs22plus.jpg" />
+    <Content Include="Assets\js\chosen.jquery.min.js" />
+    <Content Include="Assets\js\fancybox\blank.gif" />
+    <Content Include="Assets\js\fancybox\fancybox.js" />
+    <Content Include="Assets\js\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Assets\js\fancybox\fancybox_loading.gif" />
+    <Content Include="Assets\js\fancybox\fancybox_overlay.png" />
+    <Content Include="Assets\js\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Assets\js\fancybox\fancybox_sprite.png" />
+    <Content Include="Assets\js\fancybox\helpers\fancybox_buttons.png" />
+    <Content Include="Assets\js\fancybox\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="Assets\js\fancybox\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Assets\js\fancybox\helpers\jquery.fancybox-media.js" />
+    <Content Include="Assets\js\fancybox\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="Assets\js\fancybox\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Assets\js\gmap.js" />
+    <Content Include="Assets\js\ion.rangeSlider.min.js" />
+    <Content Include="Assets\js\jquery-1.11.2.min.js" />
+    <Content Include="Assets\js\jQuery.Brazzers-Carousel.js" />
+    <Content Include="Assets\js\jquery.bxslider.min.js" />
+    <Content Include="Assets\js\jquery.flexslider-min.js" />
+    <Content Include="Assets\js\jquery.waypoints.min.js" />
+    <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\plugins.js" />
+    <Content Include="Assets\js\progressbar.min.js" />
+    <Content Include="Assets\js\swiper.jquery.min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\fonts\FontAwesome.otf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-brands-400.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-regular-400.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\%40fortawesome\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\bootstrap-icons\bootstrap-icons.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\bootstrap-icons\bootstrap-icons.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\fonticons\fonticons.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-brands-400.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-regular-400.woff2" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.eot" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.ttf" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.woff" />
+    <Content Include="Areas\Admin\AssetAdmin\AdminCSS\fonts\line-awesome\la-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\Shared\_FooterLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_HeaderLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Genres\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Discounts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Discounts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Discounts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Discounts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAd\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAd\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAd\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAd\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAd\Index.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Category.cshtml" />
+    <Content Include="Views\Product\ChiTietSanPham.cshtml" />
+    <Content Include="Views\Product\ProductList.cshtml" />
+    <Content Include="Views\Shared\Pager.cshtml" />
+    <Content Include="Views\Shared\header_layout.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\_CartInfo.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55648</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44392/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

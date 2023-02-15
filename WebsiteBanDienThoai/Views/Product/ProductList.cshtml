@@ -1,0 +1,330 @@
+﻿@using PagedList
+@model IPagedList<WebsiteBanDienThoai.EF.Product>
+@{
+    ViewBag.Title = ViewBag.Type;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <section class="container">
+
+
+        <ul class="b-crumbs">
+            <li>
+                <a href="@Url.Action("ProductList","Product")">
+                    Doanh mục SP
+                </a>
+            </li>
+            <li>
+                <a href="LapTop.html">
+                    @ViewBag.Type
+                </a>
+            </li>
+        </ul>
+        <!-- Catalog Sidebar - start -->
+        <div class="section-sb">
+            <!-- Catalog Categories - start -->
+            <div class="section-sb-current">
+                <h3>
+                    <a href="#">
+                        Sản Phẩm
+                        <span id="section-sb-toggle" class="section-sb-toggle"><span class="section-sb-ico"></span></span>
+                    </a>
+                </h3>
+                <ul class="section-sb-list" id="section-sb-list">
+                    <li class="categ-1">
+                        <a href="@Url.Action("Iphone","Product")">
+                            <span class="categ-1-label">Iphone</span>
+                        </a>
+                    </li>
+                    <li class="categ-1">
+                        <a href="@Url.Action("Samsung","Product")">
+                            <span class="categ-1-label">SamSung</span>
+                        </a>
+                    </li>
+                    <li class="categ-1 has_child">
+                        <a href="@Url.Action("Xiaomi","Product")">
+                            <span class="categ-1-label">Xiaomi</span>
+                        </a>
+                    </li>
+                    <li class="categ-1 has_child">
+                        <a href="@Url.Action("Oppo","Product")">
+                            <span class="categ-1-label">Oppo</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Catalog Sidebar - end -->
+        <!-- Catalog Items | Gallery V1 - start -->
+        <div class="section-cont">
+
+            <!-- Catalog Topbar - start -->
+            <div class="section-top">
+
+                <!-- View Mode -->
+                <ul class="section-mode">
+                    <li class="section-mode-gallery active"><a title="View mode: Gallery" href="#"></a></li>
+                    <li class="section-mode-list"><a title="View mode: List" href="#"></a></li>
+                    <li class="section-mode-table"><a title="View mode: Table" href="#"></a></li>
+                </ul>
+
+                <!-- Sorting -->
+                <div class="section-sortby">
+                    <label class="mr-2">Sắp xếp:</label>
+                    <form action="#">
+                        <fieldset>
+                            <div id="sort-for" hidden>@ViewBag.SortBy</div>
+                            <select class="search">
+                                <option @(ViewBag.CurrentSort == ViewBag.ResetSort ? "selected" : "")>Mặc định</option>
+                                <option @(ViewBag.CurrentSort == ViewBag.PopularSort ? "selected" : "") value="@ViewBag.PopularSort"><a href=""> Sắp Xếp Theo Phổ Biến</a></option>
+                                <option @(ViewBag.CurrentSort == ViewBag.PriceDescSort ? "selected" : "") value="@ViewBag.PriceDescSort">Sắp Xếp Theo Giá: Cao - Thấp</option>
+                                <option @(ViewBag.CurrentSort == ViewBag.PriceAscSort ? "selected" : "") value="@ViewBag.PriceAscSort">Sắp Xếp Theo Giá: Thấp - Cao</option>
+                                <option @(ViewBag.CurrentSort == ViewBag.NameAscSort ? "selected" : "") value="@ViewBag.NameAscSort">Sắp Xếp Theo Tên: A - Z</option>
+                                <option @(ViewBag.CurrentSort == ViewBag.NameDescSort ? "selected" : "") value="@ViewBag.NameDescSort">Sắp Xếp Theo Tên: Z - A</option>
+                            </select>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="section-count">
+                    <span>Hiển thị @(ViewBag.Showing == 0?"0": "1 - "+ViewBag.Showing) trong @ViewBag.CountProduct kết quả tìm thấy</span>
+                </div>
+
+            </div>
+            <div class="prod-items section-items">
+                @foreach (var item in Model)
+                {
+                    <div class="prod-i">
+                        <div class="prod-i-top">
+                            <a href="#" class="prod-i-img"><!-- NO SPACE --><img src="~/Assets/img/@item.image" alt="Adipisci aperiam commodi"><!-- NO SPACE --></a>
+                            <a href="@item.ID" class="prod-i-buy">Thêm vào giỏ</a>
+                            <p class="prod-i-properties-label"><i class="fa fa-info"></i></p>
+
+                            <div class="prod-i-properties">
+                                <dl>
+                                    <dt>CPU:</dt>
+                                    <dd>@item.CPU <br></dd>
+                                    <dt>RAM:</dt>
+                                    <dd>@item.ram<br></dd>
+                                    <dt>Hệ điều hành:</dt>
+                                    <dd>@item.heDieuHanh<br></dd>
+                                    <dt>Bộ nhớ trong</dt>
+                                    <dd>@item.bonhotrong<br></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <h3>
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)">@item.ProductName</a>
+                        </h3>
+                        <p class="prod-i-price">
+                            <b style="color: red">@item.New_Price</b>
+                        </p>
+                    </div>
+                }
+
+
+            </div>
+
+            <ul class="pagi">
+                @*<li class="active"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li class="pagi-next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>*@
+                @Html.Partial("Pager", Model)
+            </ul>
+            <!-- Pagination - end -->
+        </div>
+        <!-- Catalog Items | Gallery V1 - end -->
+        <!-- Quick View Product - start -->
+        <div class="qview-modal">
+            <div class="prod-wrap">
+                <a href="#">
+                    <h1 class="main-ttl">
+                        <span>Reprehenderit adipisci</span>
+                    </h1>
+                </a>
+                <div class="prod-slider-wrap">
+                    <div class="prod-slider">
+                        <ul class="prod-slider-car">
+                            <li>
+                                <a data-fancybox-group="popup-product" class="fancy-img" href="http://placehold.it/500x525">
+                                    <img src="http://placehold.it/500x525" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-fancybox-group="popup-product" class="fancy-img" href="http://placehold.it/500x591">
+                                    <img src="http://placehold.it/500x591" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-fancybox-group="popup-product" class="fancy-img" href="http://placehold.it/500x525">
+                                    <img src="http://placehold.it/500x525" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-fancybox-group="popup-product" class="fancy-img" href="http://placehold.it/500x722">
+                                    <img src="http://placehold.it/500x722" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-fancybox-group="popup-product" class="fancy-img" href="http://placehold.it/500x722">
+                                    <img src="http://placehold.it/500x722" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-fancybox-group="popup-product" class="fancy-img" href="http://placehold.it/500x722">
+                                    <img src="http://placehold.it/500x722" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-fancybox-group="popup-product" class="fancy-img" href="http://placehold.it/500x722">
+                                    <img src="http://placehold.it/500x722" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="prod-thumbs">
+                        <ul class="prod-thumbs-car">
+                            <li>
+                                <a data-slide-index="0" href="#">
+                                    <img src="http://placehold.it/500x525" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-slide-index="1" href="#">
+                                    <img src="http://placehold.it/500x591" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-slide-index="2" href="#">
+                                    <img src="http://placehold.it/500x525" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-slide-index="3" href="#">
+                                    <img src="http://placehold.it/500x722" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-slide-index="4" href="#">
+                                    <img src="http://placehold.it/500x722" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-slide-index="5" href="#">
+                                    <img src="http://placehold.it/500x722" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-slide-index="6" href="#">
+                                    <img src="http://placehold.it/500x722" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="prod-cont">
+                    <p class="prod-actions">
+                        <a href="#" class="prod-favorites"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                        <a href="#" class="prod-compare"><i class="fa fa-bar-chart"></i> Compare</a>
+                    </p>
+                    <div class="prod-skuwrap">
+                        <p class="prod-skuttl">Color</p>
+                        <ul class="prod-skucolor">
+                            <li class="active">
+                                <img src="img/color/blue.jpg" alt="">
+                            </li>
+                            <li>
+                                <img src="img/color/red.jpg" alt="">
+                            </li>
+                            <li>
+                                <img src="img/color/green.jpg" alt="">
+                            </li>
+                            <li>
+                                <img src="img/color/yellow.jpg" alt="">
+                            </li>
+                            <li>
+                                <img src="img/color/purple.jpg" alt="">
+                            </li>
+                        </ul>
+                        <p class="prod-skuttl">Sizes</p>
+                        <div class="offer-props-select">
+                            <p>XL</p>
+                            <ul>
+                                <li><a href="#">XS</a></li>
+                                <li><a href="#">S</a></li>
+                                <li><a href="#">M</a></li>
+                                <li class="active"><a href="#">XL</a></li>
+                                <li><a href="#">L</a></li>
+                                <li><a href="#">4XL</a></li>
+                                <li><a href="#">XXL</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <p class="prod-price">
+                            <b class="item_current_price">$238</b>
+                        </p>
+                        <p class="prod-qnt">
+                            <input type="text" value="1">
+                            <a href="#" class="prod-plus"><i class="fa fa-angle-up"></i></a>
+                            <a href="#" class="prod-minus"><i class="fa fa-angle-down"></i></a>
+                        </p>
+                        <p class="prod-addwrap">
+                            <a href="#" class="prod-add">Add to cart</a>
+                        </p>
+                    </div>
+                    <ul class="prod-i-props">
+                        <li>
+                            <b>SKU</b> 05464207
+                        </li>
+                        <li>
+                            <b>Manufacturer</b> Mayoral
+                        </li>
+                        <li>
+                            <b>Material</b> Cotton
+                        </li>
+                        <li>
+                            <b>Pattern Type</b> Print
+                        </li>
+                        <li>
+                            <b>Wash</b> Colored
+                        </li>
+                        <li>
+                            <b>Style</b> Cute
+                        </li>
+                        <li>
+                            <b>Color</b> Blue, Red
+                        </li>
+                        <li><a href="#" class="prod-showprops">All Features</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--<ul class="pagi">-->
+            @*<li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li class="pagi-next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>*@
+            <!--@Html.Partial("Pager", Model)
+            </ul>-->
+            <div class="page-pagination text-center d-flex justify-content-center" data-aos="fade-up" data-aos-delay="0">
+                @Html.Partial("Pager", Model)
+            </div>
+        </div>
+        <!-- Quick View Product - end -->
+    </section>
+</main>
+@section scripts{
+    <script>
+        $("select.search").change(function () {
+            let getSortBy = $('#sort-for').text();
+            const selected = $(this).children("option:selected").val();
+            window.location.href = getSortBy + 'sortOrder=' + selected;
+        });
+    </script>
+    <script src="~/Scripts/UserJS/add-to-cart.js"></script>
+}

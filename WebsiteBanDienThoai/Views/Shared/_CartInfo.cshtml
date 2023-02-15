@@ -1,0 +1,12 @@
+﻿@{
+    var Cart = WebsiteBanDienThoai.Models.ShoppingCart.Cart;
+}
+
+<li>
+    <div class="h-cart">
+        <a href="/Cart/Index">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="shop-menu-ttl">Giỏ hàng</span> (<b>@Cart.Count</b>)
+        </a>
+    </div>
+</li>

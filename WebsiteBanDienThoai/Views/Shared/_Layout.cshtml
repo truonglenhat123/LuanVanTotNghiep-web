@@ -1,0 +1,116 @@
+﻿@using WebsiteBanDienThoai.common.Helper
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>TT Shop</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700ii%7CRoboto:300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/ion.rangeSlider.css">
+    <link rel="stylesheet" href="~/Assets/css/ion.rangeSlider.skinFlat.css">
+    <link rel="stylesheet" href="~/Assets/css/jquery.bxslider.css">
+    <link rel="stylesheet" href="~/Assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="~/Assets/css/flexslider.css">
+    <link rel="stylesheet" href="~/Assets/css/swiper.css">
+    <link rel="stylesheet" href="~/Assets/css/swiper.css">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+    <link rel="stylesheet" href="~/Assets/css/media.css">
+    <script src="~/Assets/js/ion.rangeSlider.min.js"></script>
+    <script src="~/Assets/js/chosen.jquery.min.js"></script>
+    <script src="~/Assets/js/gmap.js"></script>
+    <script src="~/Assets/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Assets/js/jQuery.Brazzers-Carousel.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        @Html.Partial("header_layout")
+        <div class="header-bottom">
+            <div class="container">
+                <nav class="topmenu">
+                    <button type="button" class="mainmenu-btn">Service</button>
+
+                    <ul class="mainmenu">
+                        <li>
+                            <a href="@Url.Action("Index","Home")" class="active">
+                                Trang Chủ
+                            </a>
+                        </li>
+                        <li class="menu-item-has-children">
+                                    <a href="@Url.Action("Iphone","Product")"> Iphone </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Samsung","Product")"> SamSung </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Oppo","Product")">
+                               OPPO
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Xiaomi","Product")"> Xiaomi </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Contact")">
+                                Liên Hệ
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+                </nav>
+            </div>
+    </header>
+    @RenderBody()
+    <footer class="footer-wrap">
+        <div class="container f-menu-list">
+            <div class="row">
+                <div class="f-menu">
+                    <h3>
+                        ĐỒ ÁN TỐT NGHIỆP
+                    </h3>
+                </div>
+                <div class="f-menu">
+                </div>
+                <div class="f-menu">
+                    <h3>
+                        Theo dõi chúng tôi tại
+                    </h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#"><b>Facebook</b></a></li>
+                        <li><a href="#"><b>Youtube</a></b></li>
+                        <li><a href="#"><b>Instagram</a></b></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+       
+
+    </footer>
+    <script src="~/Assets/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Assets/js/jquery.bxslider.min.js"></script>
+    <script src="~/Assets/js/fancybox/fancybox.js"></script>
+    <script src="~/Assets/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+    <script src="~/Assets/js/jquery.flexslider-min.js"></script>
+    <script src="~/Assets/js/swiper.jquery.min.js"></script>
+    <script src="~/Assets/js/jquery.waypoints.min.js"></script>
+    <script src="~/Assets/js/progressbar.min.js"></script>
+    <script src="~/Assets/js/ion.rangeSlider.min.js"></script>
+    <script src="~/Assets/js/chosen.jquery.min.js"></script>
+    <script src="~/Assets/js/jQuery.Brazzers-Carousel.js"></script>
+    <script src="~/Assets/js/plugins.js"></script>
+    <script src="~/Assets/js/main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhAYvx0GmLyN5hlf6Uv_e9pPvUT3YpozE"></script>
+    <script src="~/Assets/js/gmap.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+﻿@model WebsiteBanDienThoai.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <section class="container stylization maincont">
+
+
+        <ul class="b-crumbs">
+            <li>
+                <a href="@Url.Action("Index","Home")">
+                    Trang chủ
+                </a>
+            </li>
+            <li>
+                <span> Đăng nhập</span>
+            </li>
+        </ul>
+        <h1 class="main-ttl"><span>Đăng nhập</span></h1>
+        <div class="auth-wrap">
+            <div class="auth-col">
+                <h2>Đăng nhập</h2>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+            <form method="post" class="login">
+                <p>
+                    <label for="username">E-mail <span class="required">*</span></label>
+                    @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { type = "text" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </p>
+                <p>
+                    <label for="password">Password <span class="required">*</span></label>
+                    @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { type = "password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </p>
+                <p class="auth-submit">
+                    <input type="submit" value="Đăng nhập">
+                </p>
+                
+                <p class="auth-lost_password">
+                    <a href="@Url.Action("Register","Account")">Bạn chưa có tài khoản? đăng kí</a>
+                </p>
+            </form>
+                }
+            </div>
+        </div>
+    </section>
+</main>
+

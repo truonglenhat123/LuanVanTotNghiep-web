@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebsiteBanDienThoai.Models.DanhMuc>
+@{
+    Layout = null;
+}
+
+
+@{
+    ViewBag.Title = "_Category";
+
+}
+
+<ul class="topcatalog-list">
+
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="/Product/ProductCategory?categoryID=@item.ma_danh_muc">
+                @item.ten
+            </a>
+           
+        </li>
+    }
+</ul>

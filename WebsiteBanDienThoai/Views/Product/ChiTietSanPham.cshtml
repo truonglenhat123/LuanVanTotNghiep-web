@@ -1,0 +1,240 @@
+﻿@model WebsiteBanDienThoai.Models.ChiTietSanPham
+@using WebsiteBanDienThoai.common
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var relatedproduct = (List<WebsiteBanDienThoai.EF.Product>)ViewBag.relatedproduct;
+    var listFeedback = (List<WebsiteBanDienThoai.EF.Feedback>)ViewBag.ListFeedback;
+    var culture = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
+}
+<main>
+    <section class="container">
+        <h1 class="main-ttl"><span>@Model.Product.ProductName</span></h1>
+        <div class="prod-wrap">
+           
+            <div class="prod-slider-wrap">
+                <div class="prod-slider">
+                    <ul class="prod-slider-car">
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img" href="http://placehold.it/500x642">
+                                <img src="~/Assets/img/@Model.Product.image" alt="">
+                            </a>
+                        </li>
+                      
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Product Description/Info -->
+            <div class="prod-cont">
+                <div class="prod-cont-txt">
+                    @Model.Product.Descriptionshort
+                </div>
+                <div class="prod-info">
+                    <p class="prod-price">
+                        <b class="item_current_price">@Model.Product.New_Price.ToString("#,0", culture.NumberFormat) đ</b>
+                    </p>
+                    <p class="prod-qnt">
+                        <input value="1" type="text">
+                        <a href="#" class="prod-plus"><i class="fa fa-angle-up"></i></a>
+                        <a href="#" class="prod-minus"><i class="fa fa-angle-down"></i></a>
+                    </p>
+                    <p class="prod-addwrap">
+                        <a href="/Cart/Add/@Model.Product.ID" class="prod-add" rel="nofollow">Thêm vào giỏ hàng</a>
+                    </p>
+                </div>
+                <ul class="prod-i-props">
+                    <li>
+                        <b>Kích thước màn hình</b> @Model.Product.kichThuocManHinh
+                    </li>
+                    <li>
+                        <b>Ram</b> @Model.Product.ram
+                    </li>
+                    <li>
+                        <b>Rom</b> @Model.Product.bonhotrong
+                    </li>
+                    <li>
+                        <b>Hệ điều hành</b> @Model.Product.heDieuHanh
+                    </li>
+                    <li>
+                        <b>Camera trước</b> @Model.Product.cameraTruoc
+                    </li>
+                    <li>
+                        <b>Camera sau</b> @Model.Product.cameraSau
+                    </li>
+                    <li>
+                        <b>CPU</b> @Model.Product.CPU
+                    </li>
+                    <li>
+                        <b>Pin</b> @Model.Product.pin
+                    </li>
+                    <li><a href="#" class="prod-showprops">All Features</a></li>
+                </ul>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="prod-tabs-wrap">
+                <ul class="prod-tabs">
+                    <li><a data-prodtab-num="1" class="active" href="#" data-prodtab="#prod-tab-1">Description</a></li>
+                    <li><a data-prodtab-num="2" id="prod-props" href="#" data-prodtab="#prod-tab-2">Features</a></li>
+                    <li><a data-prodtab-num="5" href="#" data-prodtab="#prod-tab-5">Reviews (3)</a></li>
+                </ul>
+                <div class="prod-tab-cont">
+
+                    <p data-prodtab-num="1" class="prod-tab-mob active" data-prodtab="#prod-tab-1">Description</p>
+                    <div class="prod-tab stylization" id="prod-tab-1">
+                        <p>@Model.Product.Description</p>
+                    </div>
+                    <p data-prodtab-num="2" class="prod-tab-mob" data-prodtab="#prod-tab-2">Features</p>
+                    <div class="prod-tab prod-props" id="prod-tab-2">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Kích thước màn hình</td>
+                                    <td>@Model.Product.kichThuocManHinh</td>
+                                </tr>
+                                <tr>
+                                    <td>Ram</td>
+                                    <td>@Model.Product.ram</td>
+                                </tr>
+                                <tr>
+                                    <td>Rom</td>
+                                    <td>@Model.Product.bonhotrong</td>
+                                </tr>
+                                <tr>
+                                    <td>Hệ điều hành</td>
+                                    <td>@Model.Product.heDieuHanh</td>
+                                </tr>
+                                <tr>
+                                    <td>Camera trước</td>
+                                    <td>@Model.Product.cameraTruoc</td>
+                                </tr>
+                                <tr>
+                                    <td>Camera sau</td>
+                                    <td>@Model.Product.cameraSau</td>
+                                </tr>
+                                <tr>
+                                    <td>CPU</td>
+                                    <td>@Model.Product.CPU</td>
+                                </tr>
+                                <tr>
+                                    <td>Pin</td>
+                                    <td>@Model.Product.pin</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p data-prodtab-num="5" class="prod-tab-mob" data-prodtab="#prod-tab-5">Reviews</p>
+                    <div class="prod-tab" id="prod-tab-5">
+                        <ul id="list-review" class="reviews-list">
+                            @foreach (var item in listFeedback)
+                            {
+                                <li class="reviews-i existimg">
+                                    <div class="reviews-i-img">
+                                        <img src="http://placehold.it/120x120" alt="">
+                                        <div class="reviews-i-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <time datetime="2017-12-21 12:19:46" class="reviews-i-date">@item.create_at</time>
+                                    </div>
+                                    <div class="reviews-i-cont">
+                                        <p>@item.Content</p>
+                                        <span class="reviews-i-margin"></span>
+                                        <h3 class="reviews-i-ttl">@item.Name</h3>
+                                        <p class="reviews-i-showanswer"><span data-open="Show answer" data-close="Hide answer">Show answer</span> <i class="fa fa-angle-down"></i></p>
+                                    </div>
+                                    
+                                </li>
+                            }
+                        </ul>
+
+                        <div class="prod-comment-form">
+                            <h3>Add your review</h3>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => model.AddFeedback.ProductId, new { id = "product-id", Value = Model.Product.ID })
+                                @Html.TextBoxFor(model => model.AddFeedback.Name, new { id = "name", type = "text", placeHolder = "name" })
+                                @Html.TextBoxFor(model => model.AddFeedback.PhoneNumber, new { id = "phone", type = "text", placeHolder = "phone" })
+                                @Html.TextBoxFor(model => model.AddFeedback.Email, new { id = "email", type = "text", placeHolder = "email" })
+                                @Html.TextBoxFor(model => model.AddFeedback.Content, new { id = "content", type = "text", placeHolder = "content" })
+                                <input id="btnSubmitCmt" type="button" value="Submit" class="btn btn-success" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+
+    </section>
+</main>
+@section scripts{
+    <script type="text/javascript">
+
+    $(function () {
+        $("#btnSubmitCmt").click(function () {
+            var std = {};
+            std.productId = $("#product-id").val();
+            std.name = $("#name").val();
+            std.email = $("#email").val();
+            std.content = $("#content").val();
+            std.phone = $("#phone").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddReview", "Product")',
+                data: '{addFeedback: ' + JSON.stringify(std) + '}',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    addReview(std.content, std.name);
+                    $("#name").val('');
+                    $("#email").val('');
+                    $("#content").val('');
+                    $("#phone").val('');
+
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                }
+            });
+            return false;
+        });
+    });
+
+        function addReview(content, name) {
+            var stringNewReview = '';
+            stringNewReview += '<li class="reviews-i existimg">'
+            stringNewReview += '<div class="reviews-i-img">'
+            stringNewReview += '<img src="http://placehold.it/120x120">'
+            stringNewReview += '<div class="reviews-i-rating">'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '<i class="fa fa-star"></i>'
+            stringNewReview += '</div>'
+            stringNewReview += '<time datetime="2017-12-21 12:19:46" class="reviews-i-date">' + Date().toString("MM/dd/yyyy HH:mm:ss") +'</time>'
+            stringNewReview += '</div>'
+            stringNewReview += '<div class="reviews-i-cont">'
+            stringNewReview += '<p>'+content+'</p>'
+            stringNewReview += '<span class="reviews-i-margin"></span>'
+            stringNewReview += '<h3 class="reviews-i-ttl">'+name+'</h3>'
+            stringNewReview += '<p class="reviews-i-showanswer">'
+            stringNewReview += '<span data-open="Show answer" data-close="Hide answer" > Show answer</span>'
+            stringNewReview += '<i class="fa fa-angle-down"></i ></p>'
+            stringNewReview += '</div>'
+            stringNewReview += '</li>'
+
+            $('#list-review').append(stringNewReview);
+        }
+    </script>
+}

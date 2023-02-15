@@ -1,0 +1,283 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listHotProduct = (List<WebsiteBanDienThoai.EF.Product>)ViewBag.HotProduct;
+    var Iphone = (List<WebsiteBanDienThoai.EF.Product>)ViewBag.Iphone;
+    var SamSung = (List<WebsiteBanDienThoai.EF.Product>)ViewBag.SamSung;
+    var Xiaomi = (List<WebsiteBanDienThoai.EF.Product>)ViewBag.Xiaomi;
+    var Oppo = (List<WebsiteBanDienThoai.EF.Product>)ViewBag.Oppo;
+    var culture = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+<main>
+    <section class="container">
+
+
+        <!-- Slider -->
+        <div class="fr-slider-wrap">
+            <div class="fr-slider">
+                <ul class="slides">
+                    <li>
+                        <img src="~/Assets/img/banner/slider6.png" alt="">
+
+                    </li>
+                    <li>
+                        <img src="~/Assets/img/banner/slider5.jpg" alt="">
+
+                    </li>
+                    <li>
+                        <img src="~/Assets/img/banner/slider4.png" alt="">
+
+                    </li>
+                    <li>
+                        <img src="~/Assets/img/banner/slider3.png" alt="">
+
+                    </li>
+                    <li>
+                        <img src="~/Assets/img/banner/slider2.png" alt="">
+
+                    </li>
+                    <li>
+                        <img src="~/Assets/img/banner/slider1.png" alt="">
+
+                    </li>
+                    <li>
+                        <img src="~/Assets/img/banner/slider7.jpg" alt="">
+
+                    </li>
+                    <li>
+                        <img src="~/Assets/img/banner/slider8.png" alt="">
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="fr-pop-wrap">
+            <ul class="fr-pop-tabs sections-show">
+                <li><h4 class="active">Sản Phẩm Hot</h4></li>
+                <li><a href="">Xem thêm >></a></li>
+            </ul>
+
+            <div class="prod-items section-items">
+
+                @foreach (var item in listHotProduct)
+                {
+                    <div class="prod-i">
+                        <div class="prod-i-top">
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)" class="prod-i-img"><!-- NO SPACE --><img src="~/Assets/img/@item.image" alt="Adipisci aperiam commodi"><!-- NO SPACE --></a>
+                            <a href="/Cart/Add/@item.ID" class="prod-i-buy">Thêm vào giỏ</a>
+                            <p class="prod-i-properties-label"><i class="fa fa-info"></i></p>
+
+                            <div class="prod-i-properties">
+                                <dl>
+                                    <dt>@item.kichThuocManHinh</dt>
+                                    <dd>@item.dophangiaiManHinh Pocket<br></dd>
+                                    <dt>@item.CPU</dt>
+                                    <dd>@item.bonhotrong<br></dd>
+                                    <dt>@item.cameraTruoc</dt>
+                                    <dd>@item.cameraSau<br></dd>
+                                    <dt>@item.heDieuHanh</dt>
+                                    <dd>@item.pin<br></dd>
+                                    <dt>@item.ram Type</dt>
+                                    <dd>@item.sim<br></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <h3>
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)">@item.ProductName</a>
+                        </h3>
+                        <p class="prod-i-price">
+                            <b>@item.New_Price.ToString("#,0đ",culture.NumberFormat)</b>
+                        </p>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="fr-pop-wrap">
+            <ul class="fr-pop-tabs sections-show">
+                <li><h4 class="active">Iphone Nổi bật</h4></li>
+                <li><a href="@Url.Action("Iphone","Product")">Xem thêm >></a></li>
+            </ul>
+
+            <!-- Catalog Topbar - end -->
+            <div class="prod-items section-items">
+                @foreach (var item in Iphone)
+                {
+                    <div class="prod-i">
+                        <div class="prod-i-top">
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)" class="prod-i-img"><!-- NO SPACE --><img src="~/Assets/img/@item.image" alt="Adipisci aperiam commodi"><!-- NO SPACE --></a>
+                            <!--<p class="prod-i-info">
+                            a href="#" class="qview-btn prod-i-qview"><span>Xem nhanh  </span><i class="fa fa-search"></i></a>
+                        </p>-->
+                            <a href="/Cart/Add/@item.ID" class="prod-i-buy">Thêm vào giỏ</a>
+                            <p class="prod-i-properties-label"><i class="fa fa-info"></i></p>
+
+                            <div class="prod-i-properties">
+                                <dl>
+                                    <dt>@item.kichThuocManHinh</dt>
+                                    <dd>@item.dophangiaiManHinh Pocket<br></dd>
+                                    <dt>@item.CPU</dt>
+                                    <dd>@item.bonhotrong<br></dd>
+                                    <dt>@item.cameraTruoc</dt>
+                                    <dd>@item.cameraSau<br></dd>
+                                    <dt>@item.heDieuHanh</dt>
+                                    <dd>@item.pin<br></dd>
+                                    <dt>@item.ram</dt>
+                                    <dd>@item.sim<br></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <h3>
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)">@item.ProductName</a>
+                        </h3>
+                        <p class="prod-i-price">
+                            <b>@item.New_Price.ToString("#,0đ", culture.NumberFormat)</b>
+                        </p>
+                    </div>
+                }
+            </div>
+
+
+        </div>
+
+        <div class="fr-pop-wrap">
+            <ul class="fr-pop-tabs sections-show">
+                <li><h4 class="active">SamSung Nổi bật</h4></li>
+                <li><a href="@Url.Action("Samsung","Product")">Xem thêm >></a></li>
+            </ul>
+
+            <!-- Catalog Topbar - end -->
+            <div class="prod-items section-items">
+                @foreach (var item in SamSung)
+                {
+                    <div class="prod-i">
+                        <div class="prod-i-top">
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)" class="prod-i-img"><img src="~/Assets/img/@item.image" alt="Adipisci aperiam commodi"><!-- NO SPACE --></a>
+                            <a href="/Cart/Add/@item.ID" class="prod-i-buy">Thêm vào giỏ</a>
+                            <p class="prod-i-properties-label"><i class="fa fa-info"></i></p>
+
+                            <div class="prod-i-properties">
+                                <dl>
+                                    <dt>@item.kichThuocManHinh</dt>
+                                    <dd>@item.dophangiaiManHinh Pocket<br></dd>
+                                    <dt>@item.CPU</dt>
+                                    <dd>@item.bonhotrong<br></dd>
+                                    <dt>@item.cameraTruoc</dt>
+                                    <dd>@item.cameraSau<br></dd>
+                                    <dt>@item.heDieuHanh</dt>
+                                    <dd>@item.pin<br></dd>
+                                    <dt>@item.ram</dt>
+                                    <dd>@item.sim<br></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <h3>
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)">@item.ProductName</a>
+                        </h3>
+                        <p class="prod-i-price">
+                            <b>@item.New_Price.ToString("#,0đ", culture.NumberFormat)</b>
+                        </p>
+                    </div>
+                }
+            </div>
+            <!-- .fr-pop-tab-cont -->
+
+
+        </div>
+
+
+        <div class="fr-pop-wrap">
+            <ul class="fr-pop-tabs sections-show">
+                <li><h4 class="active">Xiaomi Nổi bật</h4></li>
+                <li><a href="@Url.Action("Xiaomi","Product")">Xem thêm >></a></li>
+            </ul>
+
+            <!-- Catalog Topbar - end -->
+            <div class="prod-items section-items">
+                @foreach (var item in Xiaomi)
+                {
+                    <div class="prod-i">
+                        <div class="prod-i-top">
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)" class="prod-i-img"><!-- NO SPACE --><img src="~/Assets/img/@item.image" alt="Adipisci aperiam commodi"><!-- NO SPACE --></a>
+                            <a href="/Cart/Add/@item.ID" class="prod-i-buy">Thêm vào giỏ</a>
+                            <p class="prod-i-properties-label"><i class="fa fa-info"></i></p>
+
+                            <div class="prod-i-properties">
+                                <dl>
+                                    <dt>@item.kichThuocManHinh</dt>
+                                    <dd>@item.dophangiaiManHinh Pocket<br></dd>
+                                    <dt>@item.CPU</dt>
+                                    <dd>@item.bonhotrong<br></dd>
+                                    <dt>@item.cameraTruoc</dt>
+                                    <dd>@item.cameraSau<br></dd>
+                                    <dt>@item.heDieuHanh</dt>
+                                    <dd>@item.pin<br></dd>
+                                    <dt>@item.ram</dt>
+                                    <dd>@item.sim<br></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <h3>
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)">@item.ProductName</a>
+                        </h3>
+                        <p class="prod-i-price">
+                            <b>@item.New_Price.ToString("#,0đ", culture.NumberFormat)</b>
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="fr-pop-wrap">
+            <ul class="fr-pop-tabs sections-show">
+                <li><h4 class="active">OPPO Nổi bật</h4></li>
+                <li><a href="@Url.Action("Oppo","Product")">Xem thêm >></a></li>
+            </ul>
+
+            <div class="prod-items section-items">
+                @foreach (var item in Oppo)
+                {
+                    <div class="prod-i">
+                        <div class="prod-i-top">
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)" class="prod-i-img"><!-- NO SPACE --><img src="~/Assets/img/@item.image" alt="Adipisci aperiam commodi"><!-- NO SPACE --></a>
+                            <a href="/Cart/Add/@item.ID" class="prod-i-buy">Thêm vào giỏ</a>
+                            <p class="prod-i-properties-label"><i class="fa fa-info"></i></p>
+
+                            <div class="prod-i-properties">
+                                <dl>
+                                    <dt>@item.kichThuocManHinh</dt>
+                                    <dd>@item.dophangiaiManHinh Pocket<br></dd>
+                                    <dt>@item.CPU</dt>
+                                    <dd>@item.bonhotrong<br></dd>
+                                    <dt>@item.cameraTruoc</dt>
+                                    <dd>@item.cameraSau<br></dd>
+                                    <dt>@item.heDieuHanh</dt>
+                                    <dd>@item.pin<br></dd>
+                                    <dt>@item.ram</dt>
+                                    <dd>@item.sim<br></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <h3>
+                            <a href="@Url.Action("ChiTietSanPham","Product", new {@id = item.ID} , null)">@item.ProductName</a>
+                        </h3>
+                        <p class="prod-i-price">
+                            <b>@item.New_Price.ToString("#,0đ", culture.NumberFormat)</b>
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </section>
+</main>

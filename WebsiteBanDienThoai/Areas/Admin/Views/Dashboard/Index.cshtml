@@ -1,0 +1,259 @@
+﻿@model WebsiteBanDienThoai.Models.DashboardRes
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+    var Order = (List<WebsiteBanDienThoai.EF.Order>)ViewBag.Order;
+    var OrderDetail = (List<WebsiteBanDienThoai.EF.Oder_Detail>)ViewBag.OrderDetail;
+
+    var culture = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+    var ListOrderDetail = (List<WebsiteBanDienThoai.EF.Oder_Detail>)ViewBag.ListOrderDetails;
+    var ListOrder = (List<WebsiteBanDienThoai.EF.Order>)ViewBag.ListOrder;
+    var ListProduct = (List<WebsiteBanDienThoai.EF.Product>)ViewBag.HotProduct;
+    DateTime getLastMonth = DateTime.Now.AddMonths(-1);
+    double totalOrderThisMonth = Convert.ToDouble(Order.Where(m => m.oder_date?.Month == DateTime.Now.Month && m.oder_date?.Year == DateTime.Now.Year).Count());
+    double totalOrderLastMonth = Convert.ToDouble(Order.Where(m => m.oder_date?.Month == getLastMonth.Month).Count());
+    double totalPriceOrderThisMonth = Convert.ToDouble(Order.Where(m => m.oder_date?.Month == DateTime.Now.Month && m.oder_date?.Year == DateTime.Now.Year).Sum(m => m.total));
+    double totalPriceOrderLastMonth = Convert.ToDouble(Order.Where(m => m.oder_date?.Month == getLastMonth.Month).Sum(m => m.total));
+    double percentOrder = ((1) - ((totalOrderLastMonth - totalOrderThisMonth) / (totalOrderLastMonth)));
+    double percentPriceOrder = ((1) - ((totalPriceOrderLastMonth - totalPriceOrderThisMonth) / (totalPriceOrderLastMonth)));
+    double total = 0;
+    double total2 = 0;
+}
+
+<div class="toolbar" id="kt_toolbar">
+
+    <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+
+        <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+
+            <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Thống kê</h1>
+
+            <span class="h-20px border-gray-300 border-start mx-4"></span>
+
+            <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+
+                <li class="breadcrumb-item text-muted">
+                    <a class="text-muted text-hover-primary">Bảng điều khiển</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-300 w-5px h-2px"></span>
+                </li>
+
+                <li class="breadcrumb-item text-dark">Thống kê</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="post d-flex flex-column-fluid" id="kt_post">
+
+    <div id="kt_content_container" class="container-xxl">
+
+        <div class="row g-5 g-xl-10 mb-xl-10">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
+
+                <div class="card card-flush h-md-50 mb-5 mb-xl-10">
+
+                    <div class="card-header pt-5">
+
+                        <div class="card-title d-flex flex-column">
+
+                            <div class="d-flex align-items-center">
+
+                                <span class="fs-4 fw-bold text-gray-400 me-1 align-self-start">₫</span>
+
+                                <span class="fs-2hx fw-bolder text-dark me-2 lh-1">@Model.TotalRevenue.ToString("#,0₫", culture.NumberFormat)</span>
+
+
+                            </div>
+
+                            <span class="text-gray-400 pt-1 fw-bold fs-6">Ước tính doanh thu</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-body pt-2 pb-4 d-flex align-items-center">
+
+                        <div class="d-flex flex-column content-justify-center">
+
+                            <div class="d-flex fs-6 fw-bold align-items-center">
+
+                                <div class="bullet w-8px h-6px rounded-2 bg-danger me-3"></div>
+
+                                <div class="text-gray-500 pe-1">Điện thoại</div>
+
+                                <div class="ms-auto fw-boldest text-gray-700 min-w-70px text-end">đ @Model.TotalRevenue.ToString("#,0₫", culture.NumberFormat)</div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="col-xl-9 mb-md-8 mb-xl-12">
+
+                <div class="card h-md-100">
+
+                    <div class="card-header align-items-center border-0">
+
+                        <h3 class="fw-bolder text-gray-900 m-0">Sản phẩm bán chạy</h3>
+
+                    </div>
+
+                    <div class="card-body pt-2">
+
+                        <ul class="nav nav-pills nav-pills-custom mb-3">
+
+                            <li class="nav-item mb-3 me-3 me-lg-6">
+
+                                <a class="nav-link d-flex justify-content-between flex-column flex-center overflow-hidden active w-80px h-85px py-4" data-bs-toggle="pill" href="#kt_stats_widget_2_tab_2">
+
+                                    <div class="nav-icon">
+                                        <img alt="" src="https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/14%20plus-2.jpeg" class="" />
+                                    </div>
+
+                                    <span class="nav-text text-gray-700 fw-bolder fs-6 lh-1">Điện thoại</span>
+
+                                    <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Sản Phẩm</th>
+                                        <th scope="col">Tên Sản Phẩm</th>
+                                        <th scope="col">Số lượng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ProductBestSale)
+                                    {
+                                        <tr>
+                                            <th scope="row"><img src="~/Assets/img/@item.Product.image" class="w-30px ms-n1" alt="" /></th>
+                                            <td>
+                                                <a target="_blank" href="" class="" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">@item.Product.ProductName</a>
+                                                <span class="">Item: #@item.Product.ID</span>
+                                            </td>
+                                            <td><span class="">x<span>@item.Count</span></span></td>
+                                            
+                                        </tr>
+                                    }
+                                    </tbody>
+                                   
+                            </table>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row gy-5 g-xl-12" style="
+    width: 1607px">
+
+            <div class="col-xl-8 mb-12 mb-xl-10">
+
+                <div class="card card-flush h-xl-100">
+
+                    <div class="card-header pt-7">
+
+                        <h3 class="card-title align-items-start flex-column">
+                            <span class="card-label fw-bolder text-dark">Đơn đặt hàng</span>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <table class="table align-middle table-row-dashed fs-6 gy-3">
+
+                            <thead>
+
+                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                    <th class="min-w-100px">Order ID</th>
+                                    <th class="text-end min-w-100px">Ngày tạo</th>
+                                    <th class="text-end min-w-125px">Khách hàng</th>
+                                    <th class="text-end min-w-125px">Số điện thoại</th>
+                                    <th class="text-end min-w-100px">Tổng cộng</th>
+                                    <th class="text-end min-w-50px">Status</th>
+                                    <th class="text-end"></th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody class="fw-bolder text-gray-600">
+                                @foreach (var item in ListOrder)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a class="text-gray-600 fw-bold" target="_blank" href="@Url.Action("Details","Orders",new { id = item.order_id})">#@item.order_id</a>
+                                        </td>
+                                        <td class="text-end">@item.oder_date</td>
+                                        <td class="text-end">
+                                            <a class="text-gray-600 text-hover-primary" target="_blank" href="@Url.Action("Details","Auth",new { id = item.order_id})">@item.Account.Name</a>
+                                        </td>
+                                        <td class="text-end">@item.Account.Phone</td>
+                                        <td class="text-end">@item.total.ToString("#,0₫", culture.NumberFormat)</td>
+                                        <td class="text-end">
+                                            @if (item.status == "1")
+                                            {
+                                                <span class="badge py-3 px-4 fs-7 badge-light-warning">Chờ xử lý</span>
+                                            }
+                                            else if (item.status == "2")
+                                            {
+                                                <span class="badge py-3 px-4 fs-7 badge-light-info">Đang xử lý</span>
+                                            }
+                                            else if (item.status == "3")
+                                            {
+                                                <span class="badge py-3 px-4 fs-7 badge-light-success">Hoàn thành</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge py-3 px-4 fs-7 badge-light-danger">Đã hủy</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!--end::Post-->
+@section scripts{
+    <script src="~/Areas/Admin/AssetAdmin/AdminJS/vis-timeline.bundle.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/AdminJS/widgets.bundle.js"></script>
+}
+

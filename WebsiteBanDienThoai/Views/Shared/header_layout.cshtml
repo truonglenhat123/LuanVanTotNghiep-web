@@ -1,0 +1,45 @@
+﻿@using WebsiteBanDienThoai.common.Helper
+@using Microsoft
+<div class="header-middle">
+    <div class="container header-middle-cont">
+        <div class="toplogo">
+            <a href="@Url.Action("index","Home")">
+                <img src="~/Assets/img/logo/logo-dien-thoai(35).jpg">
+            </a>
+        </div>
+        <div class="shop-menu">
+            <ul>
+               
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.Identity.GetRole() != 1)
+                    {
+                        <li>
+                            <a href="@Url.Action("DashBoard","Admin")">Admin Panel</a>
+                        </li>
+                    }
+                    <li class="topauth">
+                        <a>@User.Identity.GetName()</a>
+                        <a href="@Url.Action("LogOut","Account")">Đăng xuất</a>
+                    </li>
+
+                }
+                else
+                {
+                    <li class="topauth">
+                        <a href="@Url.Action("Register","Account")">
+                            <i class="fa fa-lock"></i>
+                            <span class="shop-menu-ttl">Đăng kí</span>
+                        </a>
+                        <a href="@Url.Action("Login","Account")">
+                            <span class="shop-menu-ttl">Đăng nhập</span>
+                        </a>
+                    </li>
+
+                }
+                @Html.Partial("_CartInfo")
+
+            </ul>
+        </div>
+    </div>
+</div>

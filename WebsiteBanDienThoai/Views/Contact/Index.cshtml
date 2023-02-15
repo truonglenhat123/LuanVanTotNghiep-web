@@ -1,0 +1,85 @@
+﻿@model WebsiteBanDienThoai.Models.SendMail
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <section class="container stylization maincont">
+
+
+        <ul class="b-crumbs">
+            <li>
+                <a href="@Url.Action("Index","Home")">
+                    Trang chủ
+                </a>
+            </li>
+            <li>
+                <span>Liên hệ</span>
+            </li>
+        </ul>
+        <h1 class="main-ttl">
+            <span>Liên hệ</span>
+        </h1>
+       
+
+       
+        <div class="contactform-wrap">
+            @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <form action="#" class="form-validate">
+                    <h3 class="component-ttl component-ttl-ct component-ttl-hasdesc">
+                        <span>Feedback</span>
+                    </h3>
+                    <p class="component-desc component-desc-ct">Các bạn hãy đóng góp ý kiến để chúng tôi tốt hơn!</p>
+                    <p class="contactform-field contactform-text">
+                        <label class="contactform-label">Họ và Tên</label>
+                        <span class="contactform-input">
+                            @Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { type = "text" } })
+
+                        </span>
+                    </p>
+                    <p class="contactform-field contactform-text">
+                        <label class="contactform-label">Số Điện Thoại</label>
+                        <span class="contactform-input">
+
+                            @Html.TextBoxFor(model => model.Phone, new { htmlAttributes = new { type = "text" } })
+                        </span>
+                    </p>
+                    <p class="contactform-field contactform-text">
+                        <label class="contactform-label">Nội dung</label>
+                        <span class="contactform-input">
+
+                            @Html.TextBoxFor(model => model.Subject, new { htmlAttributes = new { type = "text" } })
+                        </span>
+                    </p>
+                    <p class="contactform-field contactform-email">
+                        <label class="contactform-label">E-mail</label>
+
+                        <span class="contactform-input">
+                            @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { type = "text" } })
+
+                        </span>
+                    </p>
+                    <p class="contactform-field contactform-textarea">
+                        <label class="contactform-label">Nội dung</label>
+
+                        <span class="contactform-input">
+                            @Html.TextAreaFor(model => model.Message, new { htmlAttributes = new { type = "text" } })
+
+                        </span>
+                    </p>
+                    <p class="contactform-submit">
+                        <input value="Send" type="submit">
+                    </p>
+                </form>
+            }
+        </div>
+        <br>
+        <br>
+
+        <!-- Contacts - end -->
+
+    </section>
+</main>
+
